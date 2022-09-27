@@ -1,0 +1,62 @@
+'use strict';
+const bcrypt = require("bcryptjs");
+
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+    return queryInterface.bulkInsert('ReviewImages', [
+      {
+        reviewId: 1,
+        url: '/reviews/1',
+      },
+      {
+        reviewId: 2,
+        url: '/reviews/2',
+      },
+      {
+        reviewId: 3,
+        url: '/reviews/3',
+      }
+    ], {});
+  },
+
+  down: async (queryInterface, Sequelize) => {
+    const Op = Sequelize.Op;
+    return queryInterface.bulkDelete('ReviewImages');
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+// 'use strict';
+
+// module.exports = {
+//   async up(queryInterface, Sequelize) {
+//     /**
+//      * Add seed commands here.
+//      *
+//      * Example:
+//      * await queryInterface.bulkInsert('People', [{
+//      *   name: 'John Doe',
+//      *   isBetaMember: false
+//      * }], {});
+//     */
+//   },
+
+//   async down(queryInterface, Sequelize) {
+//     /**
+//      * Add commands to revert seed here.
+//      *
+//      * Example:
+//      * await queryInterface.bulkDelete('People', null, {});
+//      */
+//   }
+// };

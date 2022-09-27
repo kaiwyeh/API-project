@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class SpotImages extends Model {
+  class SpotImage extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,16 +11,22 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Spot.belongsTo(models.Spot, { foreignKey: "spotId" });
+      SpotImage.belongsTo(models.Spot, { foreignKey: "spotId" });
     }
   }
-  SpotImages.init({
-    spotId: DataTypes.INTEGER,
-    url: DataTypes.STRING,
+  SpotImage.init({
+    spotId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    url: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     preview: DataTypes.BOOLEAN
   }, {
     sequelize,
-    modelName: 'SpotImages',
+    modelName: 'SpotImage',
   });
-  return SpotImages;
+  return SpotImage;
 };
