@@ -1,29 +1,27 @@
 'use strict';
-const bcrypt = require("bcryptjs");
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('SpotImages', [
+    return await queryInterface.bulkInsert('SpotImages', [
       {
         spotId: 1,
-        url: '/spotImages/1',
+        url: 'urlone',
         preview: true,
       },
       {
         spotId: 2,
-        url: '/spotImages/2',
+        url: 'urltwo',
         preview: true,
       },
       {
         spotId: 3,
-        url: '/spotImages/2',
+        url: 'urthree',
         preview: true,
       }
     ], {});
   },
 
   down: async (queryInterface, Sequelize) => {
-    const Op = Sequelize.Op;
-    return queryInterface.bulkDelete('SpotImages');
+    await queryInterface.bulkDelete('SpotImages');
   }
 };
