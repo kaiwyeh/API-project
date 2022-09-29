@@ -44,92 +44,47 @@ const validateNewSpot = [
 
 
 
-router.get(
- '/', async (req, res) => {
-
-  const spotsLists = await Spot.findAll({
-   attributes: {
-    include: [
-     [Sequelize.fn("AVG", Sequelize.col("stars")), "avgRating"],
-    ]
-   },
-   group: ['Spot.id', 'SpotImages.id'], //need more info
+router.get('/', async (req, res) => {
+ const allSpots = await Spot.findAll({
+  attributes: {
    include: [
-    {
-     model: SpotImage,
-    },
-    {
-     model: Review,
-     attributes: []
-    }],
-  });
-
-  let Spots = [];
-  spotsLists.forEach(spot => {
-   Spots.push(spot.toJSON())
-  })
-
-  Spots.forEach(spot => {
-   spot.SpotImages.forEach(image => {
-    if (image.preview === true) {
-     spot.previewImage = image.url
-    }
-   })
-   if (!spot.previewImage) {
-    spot.previewImage = 'no preview image'
+    [Sequelize.fn("AVG", Sequelize.col("stars")), "avgRating"],
+   ]
+  },
+  group: ['Spot.id', 'SpotImages.id'],
+  include: [
+   {
+    model: SpotImage,
+   },
+   {
+    model: Review,
+    attributes: []
    }
-   delete spot.SpotImages
-  })
+  ],
+ });
 
-  return res.json({ Spots })
- }
+ let Spots = [];
+ allSpots.forEach(spot => {
+  Spots.push(spot.toJSON())
+ })
+
+ Spots.forEach(spot => {
+  spot.SpotImages.forEach(image => {
+   if (image.preview === true) {
+    spot.previewImage = image.url
+   }
+  })
+  if (!spot.previewImage) {
+   spot.previewImage = 'no image found'
+  }
+  delete spot.SpotImages
+ })
+
+ return res.json({ Spots })
+}
 );
 
 
-
-
-
-// router.get('/', async (req, res) => {
-
-//  const allSpots = await Spot.findAll({
-//   attributes: {
-//    include: [
-//     [Sequelize.fn("AVG", Sequelize.col("starts")), "avgRating"],
-//    ]
-//   },
-//   group: ['Spot.id', 'SpotImages.id'],
-//   include: [
-//    {
-//     model: Review,
-//     attributes: []
-//    },
-//    {
-//     model: SpotImage
-//    }
-//   ]
-//  });
-
-//  let spotList = [];
-//  allSpots.forEach(spot => {
-//   spotList.push(spot.toJSON())
-//  })
-
-//  spotList.forEach(spot => {
-//   spot.SpotImage.forEach(image => {
-//    if (Image.preview === true) {
-//     spot.previewImage = image.url
-//    }
-//   })
-//   if (!spot.previewImage) {
-//    spot.previewImage = 'no image'
-//   }
-//   delete spot.SpotImages
-//  })
-//  return res.json({
-//   spotList
-//  });
-// }
-// );
 
 
 
