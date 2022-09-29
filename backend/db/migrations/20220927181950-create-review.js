@@ -22,7 +22,6 @@ module.exports = {
       },
       review: {
         type: Sequelize.STRING,
-        allowNull: false
       },
       starts: {
         type: Sequelize.INTEGER,

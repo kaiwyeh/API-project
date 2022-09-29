@@ -19,34 +19,27 @@ module.exports = {
       },
       city: {
         type: Sequelize.STRING,
-        allowNull: false
       },
       state: {
         type: Sequelize.STRING,
-        allowNull: false
       },
       country: {
         type: Sequelize.STRING,
-        allowNull: false
       },
       lat: {
         type: Sequelize.DECIMAL,
-        allowNull: false
       },
       lng: {
         type: Sequelize.DECIMAL,
-        allowNull: false
       },
       name: {
         type: Sequelize.STRING(500)
       },
       description: {
         type: Sequelize.STRING(500),
-        allowNull: false
       },
       price: {
         type: Sequelize.DECIMAL,
-        allowNull: false
       },
       createdAt: {
         allowNull: false,
