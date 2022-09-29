@@ -67,12 +67,13 @@ router.post('/', validateSignup, async (req, res, next) => {
 
  return res.json({
   user,
+  token
  });
 }
 );
 
 
-
+module.exports = router;
 
 
 
@@ -128,11 +129,3 @@ router.post('/', validateSignup, async (req, res, next) => {
 //   });
 //  }
 // );
-
-
-
-
-
-
-
-module.exports = router;

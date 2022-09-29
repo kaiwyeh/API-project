@@ -7,7 +7,6 @@ const { secret, expiresIn } = jwtConfig;
 
 
 // backend/utils/auth.js
-// ...
 
 // Sends a JWT Cookie
 const setTokenCookie = (res, user) => {
@@ -33,8 +32,6 @@ const setTokenCookie = (res, user) => {
 
 
 // backend/utils/auth.js
-// ...
-
 const restoreUser = (req, res, next) => {
  // token parsed from cookies
  const { token } = req.cookies;
@@ -61,32 +58,27 @@ const restoreUser = (req, res, next) => {
 
 
 // backend/utils/auth.js
-// ...
-
 // If there is no current user, return an error
 const requireAuth = function (req, _res, next) {
  if (req.user) return next();
 
- const err = new Error('Unauthorized');
- err.title = 'Unauthorized';
- err.errors = ['Unauthorized'];
+ const err = new Error('Authentication required');
+ err.title = 'Authentication required';
+ err.errors = ['Authentication required'];
  err.status = 401;
+ return next(err);
+}
+
+const requireAuthorization = function (req, _res, next) {
+ if (req.user) return next();
+
+ const err = new Error('Forbidden');
+ err.title = 'Forbidden';
+ err.errors = ['Forbidden'];
+ err.status = 403;
  return next(err);
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-// backend/utils/auth.js
-// ...
-
-module.exports = { setTokenCookie, restoreUser, requireAuth };
+module.exports = { setTokenCookie, restoreUser, requireAuth, requireAuthorization };
