@@ -4,7 +4,7 @@
 
 ![airbnb-dbdiagram]
 
-[airbnb-dbdiagram]: /mod4_proj_documentation_9_21_v8/mod4_proj_documentation_9_21_v8/assets/airbnb_dbdiagram.png
+[airbnb-dbdiagram]: /w12-d3-long-practice-for-sprint-12-authenticate-me-long-practice-main/mod4_proj_documentation_9_21_v8/mod4_proj_documentation_9_21_v8/assets/airbnb_dbdiagram.png
 
 
 ## API Documentation
