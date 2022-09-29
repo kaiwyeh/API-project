@@ -7,8 +7,6 @@ router.get('/hello/world', function (req, res) {
  res.send('Hello World!');
 });
 
-module.exports = router;
-
 // backend/routes/index.js
 // ...
 // Add a XSRF-TOKEN cookie
@@ -27,3 +25,5 @@ const apiRouter = require('./api');
 
 router.use('/api', apiRouter);
 // ...
+
+module.exports = router;

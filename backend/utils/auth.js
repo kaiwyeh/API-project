@@ -60,25 +60,35 @@ const restoreUser = (req, res, next) => {
 // backend/utils/auth.js
 // If there is no current user, return an error
 const requireAuth = function (req, _res, next) {
- if (req.user) return next();
-
- const err = new Error('Authentication required');
- err.title = 'Authentication required';
- err.errors = ['Authentication required'];
- err.status = 401;
- return next(err);
+ if (req.user) {
+  return next();
+ } else {
+  _res.status(401)
+  return _res.json({
+   message: "Authentication required",
+   statusCode: 401
+  })
+ }
+ // const err = new Error('Authentication required');
+ // err.title = 'Authentication required';
+ // err.errors = ['Authentication required'];
+ // err.status = 401;
+ // return next(err);
 }
 
 const requireAuthorization = function (req, _res, next) {
- if (req.user) return next();
-
- const err = new Error('Forbidden');
- err.title = 'Forbidden';
- err.errors = ['Forbidden'];
- err.status = 403;
- return next(err);
+ // if (req.user) return next();
+ // const err = new Error('Forbidden');
+ // err.title = 'Forbidden';
+ // err.errors = ['Forbidden'];
+ // err.status = 403;
+ // return next(err);
+ _res.status(403)
+ return _res.json({
+  message: "Forbidden",
+  statusCode: 403
+ })
 }
-
 
 
 module.exports = { setTokenCookie, restoreUser, requireAuth, requireAuthorization };
