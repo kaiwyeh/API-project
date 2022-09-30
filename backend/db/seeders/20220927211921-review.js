@@ -8,16 +8,16 @@ module.exports = {
         spotId: 1,
         userId: 2,
         review: 'Great stay, great hospitality, very clean, and unbeatable location!',
-        stars: 5,
+        stars: 4,
       },
       {
-        spotId: 2,
-        userId: 2,
+        spotId: 1,
+        userId: 3,
         review: 'Wonderful, clean place!',
         stars: 5,
       },
       {
-        spotId: 3,
+        spotId: 2,
         userId: 3,
         review: 'Great location! Close to everything! Highly recommend this getaway spot!',
         stars: 5,
@@ -30,9 +30,15 @@ module.exports = {
       },
       {
         spotId: 3,
-        userId: 5,
+        userId: 4,
         review: 'Good experience!',
         stars: 4,
+      },
+      {
+        spotId: 3,
+        userId: 5,
+        review: 'Highly recommended!',
+        stars: 5,
       }
     ], {});
   },
