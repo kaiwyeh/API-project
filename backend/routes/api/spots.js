@@ -194,16 +194,67 @@ router.get('/current', requireAuth, async (req, res, next) => {
  })
 
 
- return res.json({
-  Spots
- });
+ return res.json({ Spots });
 }
 );
 
 
 //--------------------------------------
 
+router.get('/:spotId', async (req, res, next) => {
 
+ const { spotId } = req.params
+ const findSpots = await Spot.findByPk(spotId, {
+  attributes: {
+   include: [
+    [Sequelize.fn("COUNT", Sequelize.col("review")), "numReviews"],
+    [Sequelize.fn("AVG", Sequelize.col("stars")), "avgStarRating"]
+   ]
+  },
+  group: ['Spot.id', 'SpotImages.id', 'User.id'],
+  include: [
+   {
+    model: User
+   },
+   {
+    model: Review,
+    attributes: []
+   },
+   {
+    model: SpotImage,
+    attributes: ["id", "url", "preview"]
+   }
+  ]
+ });
+
+ if (!findSpot) {
+  res.status(404);
+  return res.json({
+   message: "Spot couldn't be found",
+   statusCode: 404
+  })
+ };
+
+ const Owner = await User.findOne({
+  where: {
+   id: findSpots.ownerId
+  },
+  attributes: ["id", "firstName", "lastName"]
+ })
+
+ let spotsWithOwner = [];
+ spotsWithOwner.push(findSpots.toJSON())
+
+ spotsWithOwner.forEach(spot => {
+  spot.Owner = Owner;
+  delete spot.User
+ })
+
+
+
+ return res.json(spotsWithOwner[0]);
+}
+);
 
 
 
