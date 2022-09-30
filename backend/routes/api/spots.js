@@ -211,11 +211,7 @@ router.get('/:spotId', async (req, res, next) => {
     [Sequelize.fn("AVG", Sequelize.col("stars")), "avgStarRating"]
    ]
   },
-  group: ['Spot.id', 'SpotImages.id', 'User.id'],
   include: [
-   {
-    model: User
-   },
    {
     model: Review,
     attributes: []
@@ -226,8 +222,8 @@ router.get('/:spotId', async (req, res, next) => {
    }
   ]
  });
-
- if (!findSpot) {
+ //console.log(findSpots)
+ if (findSpots.id === null) {
   res.status(404);
   return res.json({
    message: "Spot couldn't be found",
@@ -246,11 +242,8 @@ router.get('/:spotId', async (req, res, next) => {
  spotsWithOwner.push(findSpots.toJSON())
 
  spotsWithOwner.forEach(spot => {
-  spot.Owner = Owner;
-  delete spot.User
+  spot.Owner = Owner
  })
-
-
 
  return res.json(spotsWithOwner[0]);
 }
