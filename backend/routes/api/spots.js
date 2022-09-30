@@ -207,7 +207,7 @@ router.get('/:spotId', async (req, res, next) => {
  const findSpots = await Spot.findByPk(spotId, {
   attributes: {
    include: [
-    [Sequelize.fn("COUNT", Sequelize.col("review")), "numReviews"],
+    //[Sequelize.fn("COUNT", Sequelize.col("review")), "numReviews"],
     [Sequelize.fn("AVG", Sequelize.col("stars")), "avgStarRating"]
    ]
   },
@@ -224,7 +224,7 @@ router.get('/:spotId', async (req, res, next) => {
    //  model: User
    // }
   ],
-  group: ['Spot.id', 'SpotImages.id'],    // MOVE TO HERE!!!
+  group: ['Spot.id'],    // MOVE TO HERE!!!
  });
  //console.log(findSpots)
  if (findSpots.id === null) {
