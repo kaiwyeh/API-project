@@ -232,7 +232,8 @@ router.get('/:spotId', async (req, res, next) => {
   group: ['Spot.id', 'SpotImages.id'],    // MOVE TO HERE!!!
  });
  //console.log(findSpots)
- if (findSpots.id === null) {
+ // if (findSpots.id === null)
+ if (!findSpots) {
   res.status(404);
   return res.json({
    message: "Spot couldn't be found",
