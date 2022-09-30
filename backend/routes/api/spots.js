@@ -224,7 +224,7 @@ router.get('/:spotId', async (req, res, next) => {
    //  model: User
    // }
   ],
-  group: ['Spot.id'],    // MOVE TO HERE!!!
+  group: ['Spot.id', 'SpotImages.id'],    // MOVE TO HERE!!!
  });
  //console.log(findSpots)
  if (findSpots.id === null) {
