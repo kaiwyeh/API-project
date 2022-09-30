@@ -278,6 +278,52 @@ router.put('/:spotId', requireAuth, validateNewSpot, async (req, res, next) => {
 }
 );
 
+//-----------------------------------------
+router.post('/:spotId/reviews', requireAuth, async (req, res, next) => {
+ const { user } = req;
+ const { spotId } = req.params;
+ const { review, stars } = req.body;
+
+ const findSpot = await Spot.findByPk(spotId)
+ const findReview = await Review.findOne({
+  where: { spotId, userId: user.id }
+ })
+
+ if (!findSpot) {
+  res.status(404);
+  return res.json({
+   message: "Spot couldn't be found",
+   statusCode: 404
+  })
+ };
+
+ if (findReview) {
+  res.status(403);
+  return res.json({
+   message: "User already has a review for this spot",
+   statusCode: 403
+  })
+ };
+
+ const newReview = await Review.create({
+  spotId,
+  userId: user.id,
+  review,
+  stars
+ })
+
+ const addingNewReview = await Review.findOne({
+  attributes: ["id", "userId", "spotId", "review", "stars", "createdAt", "updatedAt"],
+  where: {
+   spotId, userId: user.id
+  }
+ })
+
+ return res.json(addingNewReview)
+})
+
+
+
 //------------------------------------------
 router.delete('/:spotId', requireAuth, async (req, res, next) => {
  const { spotId } = req.params;
