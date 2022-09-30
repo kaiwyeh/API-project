@@ -45,6 +45,11 @@ const validateNewSpot = [
 
 
 
+
+
+
+
+
 router.get('/', async (req, res) => {
 
  const allSpots = await Spot.findAll({
