@@ -45,6 +45,7 @@ const validateNewSpot = [
 
 
 router.get('/', async (req, res) => {
+
  const allSpots = await Spot.findAll({
   attributes: {
    include: [
@@ -54,13 +55,13 @@ router.get('/', async (req, res) => {
   group: ['Spot.id', 'SpotImages.id'],
   include: [
    {
-    model: SpotImage,
-   },
-   {
     model: Review,
     attributes: []
+   },
+   {
+    model: SpotImage
    }
-  ],
+  ]
  });
 
  let Spots = [];
@@ -75,25 +76,15 @@ router.get('/', async (req, res) => {
    }
   })
   if (!spot.previewImage) {
-   spot.previewImage = 'no image found'
+   spot.previewImage = 'no image'
   }
   delete spot.SpotImages
  })
-
- return res.json({ Spots })
+ return res.json({
+  Spots
+ });
 }
 );
-
-
-
-
-
-
-
-
-
-
-
 
 
 // router.post('/',
