@@ -219,8 +219,12 @@ router.get('/:spotId', async (req, res, next) => {
    {
     model: SpotImage,
     attributes: ["id", "url", "preview"]
-   }
-  ]
+   },
+   // {
+   //  model: User
+   // }
+  ],
+  group: ['Spot.id'],    //NEEDS TO BE HERE!!!
  });
  //console.log(findSpots)
  if (findSpots.id === null) {
@@ -243,6 +247,7 @@ router.get('/:spotId', async (req, res, next) => {
 
  spotsWithOwner.forEach(spot => {
   spot.Owner = Owner
+  delete spot.User
  })
 
  return res.json(spotsWithOwner[0]);
