@@ -32,6 +32,8 @@ router.get('/current', requireAuth, async (req, res, next) => {
    }
   ]
  })
+
+ console.log(allBookings)
  let Bookings = [];
  allBookings.forEach(spot => {
   Bookings.push(spot.toJSON())
@@ -39,11 +41,11 @@ router.get('/current', requireAuth, async (req, res, next) => {
 
 
  Bookings.forEach(spot => {
-  spot.Spot.SpotImage.forEach(image => {
+  spot.Spot.SpotImages.forEach(image => {
    if (image.preview) spot.Spot.preview = image.url
    if (!image.preview) spot.Spot.preview = "preview image not found"
   })
-  delete spot.Spot.SpotImage
+  delete spot.Spot.SpotImages
  })
  res.json({
   Bookings
@@ -119,7 +121,7 @@ router.put('/:bookingId', requireAuth, async (req, res, next) => {
   }
  })
  if (findBooking.userId = user.id) {
-  await booking.update({ startDate, endDate })
+  await findBooking.update({ startDate, endDate })
   return res.json(findBooking)
  }
 

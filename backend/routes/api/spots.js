@@ -195,7 +195,7 @@ router.get('/current', requireAuth, async (req, res, next) => {
   if (!spot.previewImage) {
    spot.previewImage = 'no image found'
   }
-  delete spot.SpotImages
+  delete spot.SpotImages                       //spot.SpotImage??????
  })
 
 
@@ -456,9 +456,9 @@ router.post('/:spotId/bookings', requireAuth, async (req, res, next) => {
   allBookingsList.push(booking.toJSON())
  })
 
- allBookingsList.forEach(booking => {
-  const start = Date.parse(booking.startDate)
-  const end = Date.parse(booking.endDate)
+ for (let i = 0; i < allBookingsList.length; i++) {
+  const start = Date.parse(allBookingsList[i].startDate)
+  const end = Date.parse(allBookingsList[i].endDate)
 
 
   if (start <= parsedStart < end && (parsedEnd <= end && parsedEnd > start)) {
@@ -472,7 +472,28 @@ router.post('/:spotId/bookings', requireAuth, async (req, res, next) => {
     }
    })
   }
- })
+ }
+
+
+ // allBookingsList.forEach(booking => {
+ //  const start = Date.parse(booking.startDate)
+ //  const end = Date.parse(booking.endDate)
+
+
+ //  if (start <= parsedStart < end && (parsedEnd <= end && parsedEnd > start)) {
+ //   res.status(403);
+ //   return res.json({
+ //    message: "Sorry, this spot is already booked for the specified dates",
+ //    statusCode: 403,
+ //    errors: {
+ //     "startDate": "Start date conflicts with an existing booking",
+ //     "endDate": "End date conflicts with an existing booking"
+ //    }
+ //   })
+ //  }
+ // })
+
+
 
  const addBooking = await Booking.create({ spotId, userId: user.id, startDate, endDate })
  return res.json(addBooking)
