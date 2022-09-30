@@ -245,7 +245,17 @@ router.get('/:spotId', async (req, res, next) => {
  let spotsWithOwner = [];
  spotsWithOwner.push(findSpots.toJSON())
 
+ const allReviews = await Review.findAll()
+
  spotsWithOwner.forEach(spot => {
+  let reviews = []
+  allReviews.forEach(review => {
+   if (review.spotId === spot.id) {
+    reviews.push(review.toJSON())
+   }
+  })
+  let count = reviews.length
+  spot.numReviews = count
   spot.Owner = Owner
   delete spot.User
  })
