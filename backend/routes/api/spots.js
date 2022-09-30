@@ -151,6 +151,7 @@ router.post('/:spotId/images', requireAuth, async (req, res, next) => {
 }
 );
 
+//----------------------------------
 
 
 
