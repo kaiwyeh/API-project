@@ -90,7 +90,7 @@ router.get('/', async (req, res) => {
 //------------------------
 
 router.post('/', requireAuth, validateNewSpot, async (req, res, next) => {
-
+ const { user } = req;
  const { address, city, state, country, lat, lng, name, description, price } = req.body
  const findExistAddresses = await Spot.findAll({
   where: { address }
@@ -109,7 +109,7 @@ router.post('/', requireAuth, validateNewSpot, async (req, res, next) => {
   })
  }
 
- const { user } = req;
+
  const newSpot = await Spot.create({
   ownerId: user.id, address, city, state, country, lat, lng, name, description, price
  });
@@ -154,9 +154,54 @@ router.post('/:spotId/images', requireAuth, async (req, res, next) => {
 //----------------------------------
 
 
+router.get('/current', requireAuth, async (req, res, next) => {
+
+ const { user } = req
+ const allSpots = await Spot.findAll({
+  attributes: {
+   include: [
+    [Sequelize.fn("AVG", Sequelize.col("stars")), "avgRating"],
+   ]
+  },
+  where: { ownerId: user.id },
+  group: ['Spot.id', 'SpotImages.id'],
+  include: [
+   {
+    model: Review,
+    attributes: []
+   },
+   {
+    model: SpotImage
+   }
+  ]
+ });
+
+ let Spots = [];
+ allSpots.forEach(spot => {
+  Spots.push(spot.toJSON())
+ })
+
+ Spots.forEach(spot => {
+  spot.SpotImages.forEach(image => {
+   if (image.preview) {
+    spot.previewImage = image.url
+   }
+  })
+  if (!spot.previewImage) {
+   spot.previewImage = 'no image found'
+  }
+  delete spot.SpotImages
+ })
 
 
+ return res.json({
+  Spots
+ });
+}
+);
 
+
+//--------------------------------------
 
 
 
