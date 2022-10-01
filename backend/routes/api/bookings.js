@@ -3,7 +3,7 @@ const { Booking, Spot, User, Review, SpotImage, Sequelize, ReviewImage } = requi
 const { setTokenCookie, restoreUser, requireAuth, requireAuthorization } = require('../../utils/auth');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-const spot = require('../../db/models/spot');
+const { DATE } = require('sequelize');
 
 const router = express.Router();
 
@@ -126,5 +126,52 @@ router.put('/:bookingId', requireAuth, async (req, res, next) => {
  }
 
 })
+
+
+
+router.delete('/:bookingId', requireAuth, async (req, res, next) => {
+
+
+ const { user } = req;
+ const { bookingId } = req.params;
+ const findBooking = await Booking.findByPk(bookingId)
+ const today = new Date()
+ const todaySeconds = Date.parse(today)
+ const startDateSeconds = Date.parse(findBooking.startDate)
+ const findSpot = await Spot.findByPk(findBooking.spotId)
+
+ if (!findBooking) {
+  res.status(404)
+  return res.json({
+   "message": "Booking couldn't be found",
+   "statusCode": 404
+  })
+ }
+
+ if (todaySeconds > startDateSeconds) {
+  await findImage.destroy()
+  res.status(403)
+  return res.json({
+   "message": "Bookings that have been started can't be deleted",
+   "statusCode": 403
+  })
+ }
+
+
+ if (findBooking.userId === user.id || findSpot.ownerId === user.id) {
+  await findBooking.destroy()
+  res.status(200)
+  return res.json({
+   "message": "Successfully deleted",
+   "statusCode": 200
+  })
+ } else {
+  await requireAuthorization(req, res, next)
+ }
+
+
+})
+
+
 
 module.exports = router;

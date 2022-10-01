@@ -13,7 +13,7 @@ router.post('/:reviewId/images', requireAuth, async (req, res, next) => {
  const { url } = req.body
  console.log(url)
  const findReview = await Review.findByPk(reviewId);
-console.log('test test test')
+ console.log('test test test')
  if (!findReview) {
   res.status(404)
   return res.json({
@@ -131,6 +131,13 @@ router.delete('/:reviewId', requireAuth, async (req, res, next) => {
  const { user } = req;
  const { reviewId } = req.params;
  const findReviewById = await Review.findByPk(reviewId);
+ //console.log('user', user)
+ console.log('user.id', user.id)
+ console.log('reviewId', reviewId)
+ console.log('findReviewById', findReviewById)
+ console.log('findReviewById.id', findReviewById.id)
+
+ console.log('findReviewById.userId', findReviewById.userId)
 
  if (!findReviewById) {
   res.status(404)
@@ -142,12 +149,15 @@ router.delete('/:reviewId', requireAuth, async (req, res, next) => {
 
  if (!findReviewById.userId === user.id) {
   await findReviewById.destroy()
+
   res.status(200)
   return res.json({
    message: "Successfully deleted",
    statusCode: 200
   })
- } else {
+ }
+
+ if (findReviewById.userId === user.id) {
   await requireAuthorization(req, res, next);
  }
 })

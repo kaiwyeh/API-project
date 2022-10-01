@@ -42,7 +42,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       User.hasMany(models.Spot, { foreignKey: "ownerId" });
-      User.hasMany(models.Review, { foreignKey: 'userId'})
+      User.hasMany(models.Review, { foreignKey: 'userId' })
+      User.hasMany(models.Booking, { foreignKey: 'userId' })
       User.belongsToMany(models.Spot, { through: 'Review', foreignKey: 'userId', otherKey: 'spotId' });
       User.belongsToMany(models.Spot, { through: 'Booking', foreignKey: 'userId', otherKey: 'spotId' });
     }
@@ -50,6 +51,12 @@ module.exports = (sequelize, DataTypes) => {
 
   User.init(
     {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER
+      },
       firstName: {
         type: DataTypes.STRING,
         allowNull: false,
