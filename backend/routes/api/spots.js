@@ -652,6 +652,17 @@ router.post('/:spotId/bookings', async (req, res, next) => {
  }
 
 
+
+ const addBooking = await Booking.create({ spotId, userId: user.id, startDate, endDate })
+ console.log('startDate', addBooking.startDate)
+ console.log('endDate', addBooking.endDate)
+
+ return res.json(addBooking)
+
+
+
+
+
  // allBookingsList.forEach(booking => {
  //  const start = Date.parse(booking.startDate)
  //  const end = Date.parse(booking.endDate)
@@ -670,13 +681,6 @@ router.post('/:spotId/bookings', async (req, res, next) => {
  //  }
  // })
 
-
-
- const addBooking = await Booking.create({ spotId, userId: user.id, startDate, endDate })
- console.log('startDate', addBooking.startDate)
- console.log('endDate', addBooking.endDate)
-
- return res.json(addBooking)
 })
 
 
