@@ -33,7 +33,7 @@ router.get('/current', requireAuth, async (req, res, next) => {
   ]
  })
 
- console.log(allBookings)
+ //console.log(allBookings)
  let Bookings = [];
  allBookings.forEach(spot => {
   Bookings.push(spot.toJSON())
@@ -135,6 +135,7 @@ router.delete('/:bookingId', requireAuth, async (req, res, next) => {
  const { user } = req;
  const { bookingId } = req.params;
  const findBooking = await Booking.findByPk(bookingId)
+ //console.log('findBooking', findBooking)
  const today = new Date()
  const todaySeconds = Date.parse(today)
  const startDateSeconds = Date.parse(findBooking.startDate)
@@ -157,6 +158,9 @@ router.delete('/:bookingId', requireAuth, async (req, res, next) => {
   })
  }
 
+ // console.log('findBooking.userId', findBooking.userId)
+ // console.log('user.id', user.id)
+ // console.log('findSpot.ownerId', findSpot.ownerId)
 
  if (findBooking.userId === user.id || findSpot.ownerId === user.id) {
   await findBooking.destroy()
