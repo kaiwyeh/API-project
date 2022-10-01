@@ -464,6 +464,10 @@ router.post('/:spotId/reviews', requireAuth, validateNewReview, async (req, res,
   review,
   stars
  })
+ console.log('spotId', spotId)
+ console.log('userId', user.id)
+ console.log('review', newReview.id)
+ console.log('review', newReview)
 
  const addingNewReview = await Review.findOne({
   attributes: ["id", "userId", "spotId", "review", "stars", "createdAt", "updatedAt"],
@@ -472,7 +476,8 @@ router.post('/:spotId/reviews', requireAuth, validateNewReview, async (req, res,
   }
  })
 
- return res.json(addingNewReview)
+ //return res.json(addingNewReview)
+ return res.json(newReview)
 })
 
 

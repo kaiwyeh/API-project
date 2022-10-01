@@ -7,10 +7,13 @@ const router = express.Router();
 
 router.post('/:reviewId/images', requireAuth, async (req, res, next) => {
  const { user } = req;
+ console.log(user)
  const { reviewId } = req.params;
+ console.log(reviewId)
  const { url } = req.body
+ console.log(url)
  const findReview = await Review.findByPk(reviewId);
-
+console.log('test test test')
  if (!findReview) {
   res.status(404)
   return res.json({
