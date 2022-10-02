@@ -72,6 +72,7 @@ router.get('/current', requireAuth, async (req, res, next) => {
   ],
  });
 
+ 
  let Reviews = []
  allReviews.forEach(review => {
   Reviews.push(review.toJSON())
