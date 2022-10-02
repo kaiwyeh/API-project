@@ -136,10 +136,8 @@ router.delete('/:bookingId', requireAuth, async (req, res, next) => {
  const { bookingId } = req.params;
  const findBooking = await Booking.findByPk(bookingId)
  //console.log('findBooking', findBooking)
- const today = new Date()
- const todaySeconds = Date.parse(today)
- const startDateSeconds = Date.parse(findBooking.startDate)
- const findSpot = await Spot.findByPk(findBooking.spotId)
+
+
 
  if (!findBooking) {
   res.status(404)
@@ -148,6 +146,14 @@ router.delete('/:bookingId', requireAuth, async (req, res, next) => {
    "statusCode": 404
   })
  }
+
+
+
+
+
+ const today = new Date()
+ const todaySeconds = Date.parse(today)
+ const startDateSeconds = Date.parse(findBooking.startDate)
 
  if (todaySeconds > startDateSeconds) {
   await findImage.destroy()
@@ -161,6 +167,9 @@ router.delete('/:bookingId', requireAuth, async (req, res, next) => {
  // console.log('findBooking.userId', findBooking.userId)
  // console.log('user.id', user.id)
  // console.log('findSpot.ownerId', findSpot.ownerId)
+ const findSpot = await Spot.findByPk(findBooking.spotId)
+
+
 
  if (findBooking.userId === user.id || findSpot.ownerId === user.id) {
   await findBooking.destroy()
