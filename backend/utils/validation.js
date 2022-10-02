@@ -6,19 +6,43 @@ const { validationResult } = require('express-validator');
 const handleValidationErrors = (req, _res, next) => {
  const validationErrors = validationResult(req);
 
+
  if (!validationErrors.isEmpty()) {
   const errors = validationErrors
    .array()
    .map((error) => `${error.msg}`);
 
-  const err = Error('Validation error');
-  err.errors = errors;
-  err.status = 400;
-  err.title = 'Validation error';
-  next(err);
+
+
+  _res.status(400)
+  return _res.json({
+   "message": "Validation error",
+   "statusCode": 400,
+   errors
+  })
  }
  next();
 };
+
+
+// const handleValidationErrors = (req, _res, next) => {
+//  const validationErrors = validationResult(req);
+
+//  if (!validationErrors.isEmpty()) {
+//   const errors = validationErrors
+//    .array()
+//    .map((error) => `${error.msg}`);
+
+//   const err = Error('Validation error');
+//   err.errors = errors;
+//   err.status = 400;
+//   err.title = 'Validation error';
+//   next(err);
+//  }
+//  next();
+// };
+
+
 
 module.exports = {
  handleValidationErrors
