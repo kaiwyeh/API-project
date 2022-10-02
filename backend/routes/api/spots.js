@@ -496,16 +496,21 @@ router.delete('/:spotId', requireAuth, async (req, res, next) => {
   })
  };
 
- if (findSpot.id === user.id) {
+
+
+
+
+ 
+ if (findSpot.ownerid === user.ownerid) {
   await findSpot.destroy();
   res.status(200);
   return res.json({
    message: "Successfully deleted",
    statusCode: 200
   })
+ } else {
+  await requireAuthorization(res, res, next)
  };
-
-
 })
 
 //-----------------------
@@ -561,14 +566,14 @@ router.get('/:spotId/bookings', requireAuth, async (req, res, next) => {
  if (findSpot.ownerId !== user.id) {
   const Bookings = await Booking.findAll({
    attributes: ["spotId", "startDate", "endDate"],
-   where: { spotId },
+   where: { spotId: findSpot.id },     //change
   })
   return res.json({ Bookings })
  }
 
  if (findSpot.ownerId === user.id) {
   const Bookings = await Booking.findAll({
-   where: { spotId },
+   where: { spotId: findSpot.id },               //change
    include: [
     {
      model: User,
