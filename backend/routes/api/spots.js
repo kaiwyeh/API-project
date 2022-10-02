@@ -460,7 +460,7 @@ router.post('/:spotId/reviews', requireAuth, validateNewReview, async (req, res,
 
  const newReview = await Review.create({
   userId: user.id,
-  spotId,
+  spotId: Number(spotId),        //FIXED! 10.1.2022, WAS spotid
   review,
   stars
  })
@@ -469,12 +469,12 @@ router.post('/:spotId/reviews', requireAuth, validateNewReview, async (req, res,
  // console.log('review', newReview.id)
  // console.log('review', newReview)
 
- const addingNewReview = await Review.findOne({
-  attributes: ["id", "userId", "spotId", "review", "stars", "createdAt", "updatedAt"],
-  where: {
-   spotId, userId: user.id
-  }
- })
+ // const addingNewReview = await Review.findOne({
+ //  attributes: ["id", "userId", "spotId", "review", "stars", "createdAt", "updatedAt"],
+ //  where: {
+ //   spotId, userId: user.id
+ //  }
+ // })
 
  //return res.json(addingNewReview)
  return res.json(newReview)
