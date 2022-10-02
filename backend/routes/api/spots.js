@@ -90,10 +90,8 @@ router.get('/', validateAllSpotsQueries, async (req, res) => {
 
  if (!page) page = 1;
  if (!size) size = 20;
-
  page = parseInt(page);
  size = parseInt(size);
-
  let limit = size;
  let offset = size * (page - 1);
  const where = {}
@@ -344,9 +342,16 @@ router.get('/current', requireAuth, async (req, res, next) => {
  });
 
  let Spots = [];
- allSpots.forEach(spot => {
+ // allSpots.forEach(spot => {        //change
+ //  Spots.push(spot.toJSON())
+ // })
+
+ for (let i = 0; i < allSpots.length; i++) {
+  let spot = allSpots[i]
+
   Spots.push(spot.toJSON())
- })
+
+ }
 
  Spots.forEach(spot => {
   spot.SpotImages.forEach(image => {
@@ -354,10 +359,12 @@ router.get('/current', requireAuth, async (req, res, next) => {
     spot.previewImage = image.url
    }
   })
+
   if (!spot.previewImage) {
    spot.previewImage = 'no image found'
   }
-  delete spot.SpotImages                       //spot.SpotImage??????
+
+  delete spot.SpotImages
  })
 
 
