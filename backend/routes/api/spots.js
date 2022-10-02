@@ -48,9 +48,11 @@ const validateNewSpot = [
 
 const validateAllSpotsQueries = [
  query("page")
+  .optional()
   .isInt({ min: 1 })
   .withMessage("Page must be greater than or equal to 1"),
  query("size")
+  .optional()
   .isInt({ min: 1 })
   .withMessage("Size must be greater than or equal to 1"),
  query("maxLat")
