@@ -127,17 +127,22 @@ router.put('/:reviewId', requireAuth, validateNewReview, async (req, res, next) 
 })
 
 
+
+
+
+
 router.delete('/:reviewId', requireAuth, async (req, res, next) => {
  const { user } = req;
+
  const { reviewId } = req.params;
  const findReviewById = await Review.findByPk(reviewId);
  //console.log('user', user)
- console.log('user.id', user.id)
- console.log('reviewId', reviewId)
- console.log('findReviewById', findReviewById)
- console.log('findReviewById.id', findReviewById.id)
+ // console.log('user.id', user.id)
+ // console.log('reviewId', reviewId)
+ // console.log('findReviewById', findReviewById)
+ // console.log('findReviewById.id', findReviewById.id)
 
- console.log('findReviewById.userId', findReviewById.userId)
+ // console.log('findReviewById.userId', findReviewById.userId)
 
  if (!findReviewById) {
   res.status(404)
@@ -147,9 +152,10 @@ router.delete('/:reviewId', requireAuth, async (req, res, next) => {
   })
  }
 
- if (!findReviewById.userId === user.id) {
-  await findReviewById.destroy()
 
+
+ if (findReviewById.userId === user.id) {
+  await findReviewById.destroy()
   res.status(200)
   return res.json({
    message: "Successfully deleted",
@@ -157,7 +163,7 @@ router.delete('/:reviewId', requireAuth, async (req, res, next) => {
   })
  }
 
- if (findReviewById.userId === user.id) {
+ if (findReviewById.userId !== user.id) {
   await requireAuthorization(req, res, next);
  }
 })
