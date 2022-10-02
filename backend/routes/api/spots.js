@@ -436,6 +436,7 @@ router.post('/:spotId/reviews', requireAuth, validateNewReview, async (req, res,
  const { spotId } = req.params;
  const { review, stars } = req.body;
 
+
  const findSpot = await Spot.findByPk(spotId)
  const findReview = await Review.findOne({
   where: { spotId, userId: user.id }
@@ -526,7 +527,7 @@ router.get('/:spotId/reviews', async (req, res, next) => {
   })
  };
 
- const findReviews = await Review.findAll({
+ const Reviews = await Review.findAll({
   where: { spotId },
   include: [
    {
@@ -539,7 +540,7 @@ router.get('/:spotId/reviews', async (req, res, next) => {
    },
   ]
  })
- return res.json({ findReviews })
+ return res.json({ Reviews })
 })
 
 
