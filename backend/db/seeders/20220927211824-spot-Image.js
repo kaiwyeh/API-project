@@ -17,6 +17,16 @@ module.exports = {
         spotId: 3,
         url: 'urthree',
         preview: true,
+      },
+      {
+        spotId: 4,
+        url: 'urfour',
+        preview: true,
+      },
+      {
+        spotId: 5,
+        url: 'urfive',
+        preview: true,
       }
     ], {});
   },
