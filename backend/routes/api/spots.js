@@ -139,11 +139,20 @@ router.get('/', validateAllSpotsQueries, async (req, res) => {
 
   const currentId = spot.id
   let reviews = [];
-  findAllReviews.forEach(review => {
+  // findAllReviews.forEach(review => {
+  //  if (review.spotId === currentId) {    //change
+  //   reviews.push(review.toJSON())
+  //  }
+  // })
+
+  for (let i = 0; i < findAllReviews.length; i++) {
+   let review = findAllReviews[i]
+
    if (review.spotId === currentId) {
     reviews.push(review.toJSON())
    }
-  })
+
+  }
 
   let sum = 0
 
@@ -157,7 +166,7 @@ router.get('/', validateAllSpotsQueries, async (req, res) => {
    let review = reviews[i]
 
    sum += review.stars
-   
+
   }
 
   spot.avgRating = sum / count
@@ -296,9 +305,16 @@ router.post('/:spotId/images', requireAuth, async (req, res, next) => {
    url,
    preview
   })
- } else {
+ }
+
+ if (findSpot.ownerId !== user.id) {
   await requireAuthorization(req, res, next);
  }
+ // else {
+ //  await requireAuthorization(req, res, next);        //change
+ // }
+
+
 }
 );
 
