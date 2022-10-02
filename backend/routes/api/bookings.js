@@ -35,10 +35,14 @@ router.get('/current', requireAuth, async (req, res, next) => {
 
  //console.log(allBookings)
  let Bookings = [];
- allBookings.forEach(spot => {
-  Bookings.push(spot.toJSON())
- })
 
+
+
+ for (let i = 0; i < allBookings.length; i++) {
+
+  let spot = allBookings[i];
+  Bookings.push(spot.toJSON())
+ }
 
  Bookings.forEach(spot => {
   spot.Spot.SpotImages.forEach(image => {
@@ -98,17 +102,21 @@ router.put('/:bookingId', requireAuth, async (req, res, next) => {
  })
 
  let allBookingsList = [];
- currentBooking.forEach(booking => {
 
+ 
+
+ for (let i = 0; i < currentBooking.length; i++) {
+
+  let booking = currentBooking[i];
   allBookingsList.push(booking.toJSON())
- })
+ }
 
  allBookingsList.forEach(booking => {
-  const start = Date.parse(booking.startDate);
-  const end = Date.parse(booking.endDate);
+  const start = Date.parse(booking.startDate);       //current bookings'
+  const end = Date.parse(booking.endDate);           //current bookings'
 
-  if (start <= parsedStart < end && (parsedEnd <= end && parsedEnd > start)) {
-   res.status(403)
+  if (start <= parsedStart < end && (parsedEnd <= end && parsedEnd > start)) {      //left: if new bookings' start date is between a current booking's start and end date,
+   res.status(403)                                                                   //right: new bookings'end date is between a current booking's start and end date
 
    return res.json({
     "message": "Sorry, this spot is already booked for the specified dates",

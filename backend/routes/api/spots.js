@@ -46,6 +46,8 @@ const validateNewSpot = [
 
 
 
+
+
 const validateAllSpotsQueries = [
  query("page")
   .optional()
@@ -85,15 +87,16 @@ const validateAllSpotsQueries = [
 
 
 
+
+
+
 router.get('/', validateAllSpotsQueries, async (req, res) => {
  let { page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } = req.query;
 
  if (!page) page = 1;
  if (!size) size = 20;
-
  page = parseInt(page);
  size = parseInt(size);
-
  let limit = size;
  let offset = size * (page - 1);
  const where = {}
@@ -121,9 +124,18 @@ router.get('/', validateAllSpotsQueries, async (req, res) => {
  })
 
  let Spots = [];
- spotsLists.forEach(spot => {
+
+
+
+
+
+ for (let i = 0; i < spotsLists.length; i++) {
+
+  let spot = spotsLists[i]
   Spots.push(spot.toJSON())
- })
+
+ }
+
 
  const findAllReviews = await Review.findAll()
 
@@ -131,24 +143,46 @@ router.get('/', validateAllSpotsQueries, async (req, res) => {
 
   const currentId = spot.id
   let reviews = [];
-  findAllReviews.forEach(review => {
+
+
+
+
+  for (let i = 0; i < findAllReviews.length; i++) {
+   let review = findAllReviews[i]
+
    if (review.spotId === currentId) {
     reviews.push(review.toJSON())
    }
-  })
-  let count = reviews.length
+
+  }
+
   let sum = 0
-  reviews.forEach(review => {
+
+  let count = reviews.length
+
+
+
+
+  for (let i = 0; i < reviews.length; i++) {
+   let review = reviews[i]
+
    sum += review.stars
-  })
+
+  }
 
   spot.avgRating = sum / count
 
-  spot.SpotImages.forEach(image => {
-   if (image.preview) {
-    spot.previewImage = image.url
-   }
-  })
+
+
+
+
+  for (let i = 0; i < spot.SpotImages.length; i++) {
+   let image = spot.SpotImages[i]
+
+   spot.previewImage = image.url
+
+  }
+
   if (!spot.previewImage) {
    spot.previewImage = 'no preview found'
   }
@@ -270,9 +304,15 @@ router.post('/:spotId/images', requireAuth, async (req, res, next) => {
    url,
    preview
   })
- } else {
+ }
+
+ if (findSpot.ownerId !== user.id) {
   await requireAuthorization(req, res, next);
  }
+
+
+
+
 }
 );
 
@@ -302,9 +342,15 @@ router.get('/current', requireAuth, async (req, res, next) => {
  });
 
  let Spots = [];
- allSpots.forEach(spot => {
+
+
+
+ for (let i = 0; i < allSpots.length; i++) {
+  let spot = allSpots[i]
+
   Spots.push(spot.toJSON())
- })
+
+ }
 
  Spots.forEach(spot => {
   spot.SpotImages.forEach(image => {
@@ -312,10 +358,12 @@ router.get('/current', requireAuth, async (req, res, next) => {
     spot.previewImage = image.url
    }
   })
+
   if (!spot.previewImage) {
    spot.previewImage = 'no image found'
   }
-  delete spot.SpotImages                       //spot.SpotImage??????
+
+  delete spot.SpotImages
  })
 
 
@@ -460,7 +508,7 @@ router.post('/:spotId/reviews', requireAuth, validateNewReview, async (req, res,
 
  const newReview = await Review.create({
   userId: user.id,
-  spotId: Number(spotId),        //FIXED! 10.1.2022, WAS spotid
+  spotId: Number(spotId),        //FIXED! 10.1.2022, WAS a string
   review,
   stars
  })
@@ -469,14 +517,9 @@ router.post('/:spotId/reviews', requireAuth, validateNewReview, async (req, res,
  // console.log('review', newReview.id)
  // console.log('review', newReview)
 
- // const addingNewReview = await Review.findOne({
- //  attributes: ["id", "userId", "spotId", "review", "stars", "createdAt", "updatedAt"],
- //  where: {
- //   spotId, userId: user.id
- //  }
- // })
 
- //return res.json(addingNewReview)
+
+
  return res.json(newReview)
 })
 
@@ -498,9 +541,6 @@ router.delete('/:spotId', requireAuth, async (req, res, next) => {
 
 
 
-
-
-
  if (findSpot.ownerid === user.ownerid) {
   await findSpot.destroy();
   res.status(200);
@@ -508,9 +548,12 @@ router.delete('/:spotId', requireAuth, async (req, res, next) => {
    message: "Successfully deleted",
    statusCode: 200
   })
- } else {
+ }
+
+ if (findSpot.ownerid !== user.ownerid) {
   await requireAuthorization(res, res, next)
- };
+ }
+
 })
 
 //-----------------------
@@ -566,14 +609,14 @@ router.get('/:spotId/bookings', requireAuth, async (req, res, next) => {
  if (findSpot.ownerId !== user.id) {
   const Bookings = await Booking.findAll({
    attributes: ["spotId", "startDate", "endDate"],
-   where: { spotId: findSpot.id },     //change
+   where: { spotId: findSpot.id },
   })
   return res.json({ Bookings })
  }
 
  if (findSpot.ownerId === user.id) {
   const Bookings = await Booking.findAll({
-   where: { spotId: findSpot.id },               //change
+   where: { spotId: findSpot.id },
    include: [
     {
      model: User,

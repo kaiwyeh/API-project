@@ -1,5 +1,4 @@
 const express = require('express');
-
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User } = require('../../db/models');
 const { check } = require('express-validator');
