@@ -7,13 +7,13 @@ const router = express.Router();
 
 router.post('/:reviewId/images', requireAuth, async (req, res, next) => {
  const { user } = req;
- console.log(user)
+ //console.log(user)
  const { reviewId } = req.params;
- console.log(reviewId)
+ //console.log(reviewId)
  const { url } = req.body
- console.log(url)
+ //console.log(url)
  const findReview = await Review.findByPk(reviewId);
- console.log('test test test')
+ //console.log('test test test')
  if (!findReview) {
   res.status(404)
   return res.json({
@@ -72,12 +72,12 @@ router.get('/current', requireAuth, async (req, res, next) => {
   ],
  });
 
- let ReviewList = []
+ let Reviews = []
  allReviews.forEach(review => {
-  ReviewList.push(review.toJSON())
+  Reviews.push(review.toJSON())
  })
 
- ReviewList.forEach(review => {
+ Reviews.forEach(review => {
   review.ReviewImages.forEach(image => {
    review.Spot.previewImage = image.url
   })
@@ -85,7 +85,7 @@ router.get('/current', requireAuth, async (req, res, next) => {
    review.Spot.previewImage = 'no preview image found'
   }
  })
- return res.json({ ReviewList })
+ return res.json({ Reviews })
 })
 
 //------------------------------------------

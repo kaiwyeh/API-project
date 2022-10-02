@@ -410,14 +410,13 @@ router.put('/:spotId', requireAuth, validateNewSpot, async (req, res, next) => {
  if (findSpot.ownerId === user.id) {
   await findSpot.update({ address, city, state, country, lat, lng, name, description, price })
 
-  return res.json({
-   findSpot
-  })
- } else {
+  return res.json(findSpot)
+ }
+
+ if (findSpot.ownerId !== user.id) {
   await requireAuthorization(req, res, next);
  }
-}
-);
+});
 
 //-----------------------------------------
 const validateNewReview = [
@@ -436,6 +435,7 @@ router.post('/:spotId/reviews', requireAuth, validateNewReview, async (req, res,
  const { user } = req;
  const { spotId } = req.params;
  const { review, stars } = req.body;
+
 
  const findSpot = await Spot.findByPk(spotId)
  const findReview = await Review.findOne({
@@ -527,7 +527,7 @@ router.get('/:spotId/reviews', async (req, res, next) => {
   })
  };
 
- const findReviews = await Review.findAll({
+ const Reviews = await Review.findAll({
   where: { spotId },
   include: [
    {
@@ -540,7 +540,7 @@ router.get('/:spotId/reviews', async (req, res, next) => {
    },
   ]
  })
- return res.json({ findReviews })
+ return res.json({ Reviews })
 })
 
 
