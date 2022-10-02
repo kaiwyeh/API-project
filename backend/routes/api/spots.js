@@ -410,14 +410,13 @@ router.put('/:spotId', requireAuth, validateNewSpot, async (req, res, next) => {
  if (findSpot.ownerId === user.id) {
   await findSpot.update({ address, city, state, country, lat, lng, name, description, price })
 
-  return res.json({
-   findSpot
-  })
- } else {
+  return res.json(findSpot)
+ }
+
+ if (findSpot.ownerId !== user.id) {
   await requireAuthorization(req, res, next);
  }
-}
-);
+});
 
 //-----------------------------------------
 const validateNewReview = [
