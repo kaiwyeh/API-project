@@ -35,9 +35,7 @@ router.get('/current', requireAuth, async (req, res, next) => {
 
  //console.log(allBookings)
  let Bookings = [];
- // allBookings.forEach(spot => {                 //change
- //  Bookings.push(spot.toJSON())
- // })
+
 
 
  for (let i = 0; i < allBookings.length; i++) {
@@ -104,9 +102,8 @@ router.put('/:bookingId', requireAuth, async (req, res, next) => {
  })
 
  let allBookingsList = [];
- // currentBooking.forEach(booking => {               //change
- //  allBookingsList.push(booking.toJSON())
- // })
+
+ 
 
  for (let i = 0; i < currentBooking.length; i++) {
 

@@ -55,15 +55,16 @@ router.get('/current', requireAuth, async (req, res, next) => {
    userId: user.id
   },
   include: [
+
+   {
+    model: User,
+    attributes: ["id", "firstName", "lastName"]
+   },
    {
     model: Spot,
     attributes: {
      exclude: ["description", "createdAt", "updatedAt"]
     }
-   },
-   {
-    model: User,
-    attributes: ["id", "firstName", "lastName"]
    },
    {
     model: ReviewImage,
@@ -72,7 +73,7 @@ router.get('/current', requireAuth, async (req, res, next) => {
   ],
  });
 
- 
+
  let Reviews = []
  allReviews.forEach(review => {
   Reviews.push(review.toJSON())
