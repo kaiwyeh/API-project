@@ -121,9 +121,17 @@ router.get('/', validateAllSpotsQueries, async (req, res) => {
  })
 
  let Spots = [];
- spotsLists.forEach(spot => {
+ // spotsLists.forEach(spot => {                         //change
+ //  Spots.push(spot.toJSON())
+ // })
+
+
+ for (let i = 0; i < spotsLists.length; i++) {
+
+  let spot = spotsLists[i]
   Spots.push(spot.toJSON())
- })
+ }
+
 
  const findAllReviews = await Review.findAll()
 
@@ -136,19 +144,37 @@ router.get('/', validateAllSpotsQueries, async (req, res) => {
     reviews.push(review.toJSON())
    }
   })
-  let count = reviews.length
+
   let sum = 0
-  reviews.forEach(review => {
+
+  let count = reviews.length
+
+  // reviews.forEach(review => {                //change
+  //  sum += review.stars
+  // })
+
+  for (let i = 0; i < reviews.length; i++) {
+   let review = reviews[i]
+
    sum += review.stars
-  })
+   
+  }
 
   spot.avgRating = sum / count
 
-  spot.SpotImages.forEach(image => {
-   if (image.preview) {
-    spot.previewImage = image.url
-   }
-  })
+  // spot.SpotImages.forEach(image => {   //change
+  //  if (image.preview) {
+  //   spot.previewImage = image.url
+  //  }
+  // })
+
+  for (let i = 0; i < spot.SpotImages.length; i++) {
+   let image = spot.SpotImages[i]
+
+   spot.previewImage = image.url
+
+  }
+
   if (!spot.previewImage) {
    spot.previewImage = 'no preview found'
   }
