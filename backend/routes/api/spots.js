@@ -459,8 +459,8 @@ router.post('/:spotId/reviews', requireAuth, validateNewReview, async (req, res,
  };
 
  const newReview = await Review.create({
-  spotId,
   userId: user.id,
+  spotId,
   review,
   stars
  })
@@ -500,7 +500,7 @@ router.delete('/:spotId', requireAuth, async (req, res, next) => {
 
 
 
- 
+
  if (findSpot.ownerid === user.ownerid) {
   await findSpot.destroy();
   res.status(200);
@@ -592,8 +592,8 @@ router.post('/:spotId/bookings', async (req, res, next) => {
  const { user } = req;
  const { spotId } = req.params;
  const { startDate, endDate } = req.body
- console.log(startDate)
- console.log(endDate)
+ // console.log(startDate)
+ // console.log(endDate)
 
  const findSpot = await Spot.findByPk(spotId)
 
