@@ -26,7 +26,7 @@ export const login = (user) => async (dispatch) => {
     }),
   });
   const data = await response.json();
-  dispatch(setUser(data.user));
+  dispatch(setUser(data));     //changed
   return response;
 };
 
@@ -51,11 +51,25 @@ const sessionReducer = (state = initialState, action) => {
 export const restoreUser = () => async dispatch => {
   const response = await csrfFetch('/api/session');
   const data = await response.json();
-  dispatch(setUser(data.user));
+  dispatch(setUser(data));   //changed
   return response;
 };
 
-
+//phase 2 - sign up
+export const signup = (user) => async (dispatch) => {
+  const { username, email, password } = user;
+  const response = await csrfFetch("/api/users", {
+    method: "POST",
+    body: JSON.stringify({
+      username,
+      email,
+      password,
+    }),
+  });
+  const data = await response.json();
+  dispatch(setUser(data));   //changed
+  return response;
+};
 
 export default sessionReducer;
 
