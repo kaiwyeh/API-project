@@ -28,9 +28,15 @@ router.use('/spot-images', spotImageRouter);
 
 router.use('/review-images', reviewImageRouter);
 
+// router.use((req, res, next)=> {
+//  console.log('BEFORE THE POST TEST ROUTE')
+//  next()
+// })
 
 router.post('/test', (req, res) => {
+ //console.log('IN THE POST TEST ROUTE')
  res.json({ requestBody: req.body });
+
 });
 
 module.exports = router;
