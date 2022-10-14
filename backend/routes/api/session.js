@@ -52,7 +52,7 @@ router.post(
    id: user.id,
    firstName: user.firstName,
    lastName: user.lastName,
-   email: credential,
+   email: user.email,
    username: user.username,
    token
   });
@@ -74,16 +74,17 @@ router.delete(
 // Restore session user
 router.get(
  '/',
- requireAuth,
  (req, res, next) => {
   const { user } = req;
-  return res.json({
-   id: user.id,
-   firstName: user.firstName,
-   lastName: user.lastName,
-   email: user.email,
-   username: user.username
-  })
+  if (user) {
+   res.json({
+    id: user.id,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    email: user.email,
+    username: user.username
+   })
+  } else { res.json(null) }
  }
 );
 

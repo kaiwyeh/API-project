@@ -14,6 +14,14 @@ const validateSignup = [
   .exists({ checkFalsy: true })
   .isLength({ min: 4 })
   .withMessage('Please provide a username with at least 4 characters.'),
+ check('firstName')
+  .exists({ checkFalsy: true })
+  .isLength({ min: 2 })
+  .withMessage('Please provide a firstname with at least 2 characters.'),
+ check('lastName')
+  .exists({ checkFalsy: true })
+  .isLength({ min: 2 })
+  .withMessage('Please provide a lastname with at least 2 characters.'),
  check('username')
   .not()
   .isEmail()
@@ -28,6 +36,7 @@ const validateSignup = [
 // Sign up    //phase 5
 router.post('/', validateSignup, async (req, res, next) => {
  const { email, password, username, firstName, lastName } = req.body;
+ //console.log('THIS IS FIRSTNAME, LASTNAME', firstName, lastName, req.body)
 
  const findExistEmail = await User.findOne({
   where: { email }
@@ -65,9 +74,6 @@ router.post('/', validateSignup, async (req, res, next) => {
 
  const user = await User.signup({ email, username, password, firstName, lastName });
  let token = await setTokenCookie(res, user);
-
-
-
 
  return res.json({
   id: user.id,
