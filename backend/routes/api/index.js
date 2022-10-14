@@ -33,10 +33,10 @@ router.use('/review-images', reviewImageRouter);
 //  next()
 // })
 
-router.post('/test', (req, res) => {
- //console.log('IN THE POST TEST ROUTE')
- res.json({ requestBody: req.body });
+// router.post('/test', (req, res) => {
+//  //console.log('IN THE POST TEST ROUTE')
+//  res.json({ requestBody: req.body });
 
-});
+// });
 
 module.exports = router;
