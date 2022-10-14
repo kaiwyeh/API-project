@@ -52,7 +52,7 @@ router.post(
    id: user.id,
    firstName: user.firstName,
    lastName: user.lastName,
-   email: credential,
+   email: user.email,
    username: user.username,
    token
   });
