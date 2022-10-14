@@ -36,7 +36,7 @@ const validateSignup = [
 // Sign up    //phase 5
 router.post('/', validateSignup, async (req, res, next) => {
  const { email, password, username, firstName, lastName } = req.body;
- console.log('THIS IS FIRSTNAME, LASTNAME', firstName, lastName, req.body)
+ //console.log('THIS IS FIRSTNAME, LASTNAME', firstName, lastName, req.body)
 
  const findExistEmail = await User.findOne({
   where: { email }
