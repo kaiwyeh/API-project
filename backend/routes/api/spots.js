@@ -380,7 +380,6 @@ router.get('/:spotId', async (req, res, next) => {
  const findSpots = await Spot.findByPk(spotId, {
   attributes: {
    include: [
-    //[Sequelize.fn("COUNT", Sequelize.col("review")), "numReviews"],
     [Sequelize.fn("AVG", Sequelize.col("stars")), "avgStarRating"]
    ]
   },
@@ -392,10 +391,7 @@ router.get('/:spotId', async (req, res, next) => {
    {
     model: SpotImage,
     attributes: ["id", "url", "preview"]
-   },
-   // {
-   //  model: User
-   // }
+   }
   ],
   group: ['Spot.id', 'SpotImages.id'],    // MOVE TO HERE!!!
  });
@@ -508,7 +504,7 @@ router.post('/:spotId/reviews', requireAuth, validateNewReview, async (req, res,
 
  const newReview = await Review.create({
   userId: user.id,
-  spotId: Number(spotId),        //FIXED! 10.1.2022, WAS a string
+  spotId: Number(spotId),        //FIXED!
   review,
   stars
  })
@@ -609,7 +605,7 @@ router.get('/:spotId/bookings', requireAuth, async (req, res, next) => {
  if (findSpot.ownerId !== user.id) {
   const Bookings = await Booking.findAll({
    attributes: ["spotId", "startDate", "endDate"],
-   where: { spotId: findSpot.id },     
+   where: { spotId: findSpot.id },
   })
   return res.json({ Bookings })
  }
