@@ -87,4 +87,3 @@ export const logout = () => async (dispatch) => {
 export default sessionReducer;
 
 
-//phase 1 part 2 Test the session actions and reducer -> next state = undefined!
