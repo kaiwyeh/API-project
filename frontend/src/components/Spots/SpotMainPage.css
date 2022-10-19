@@ -1,0 +1,74 @@
+.spothome_container {
+ display: flex;
+ justify-content: center;
+ padding: 15px;
+}
+
+.spotcard {
+ flex-wrap: wrap;
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ padding: 10px;
+ max-width: 1200px;
+
+}
+
+.spot_image_container {
+ padding: 10px 10px 10px 10px;
+}
+
+.spot_image {
+ display: flex;
+ justify-content: center;
+ border-radius: 15px;
+ object-fit: cover;
+ width: 260px;
+ height: 260px;
+ cursor: pointer;
+}
+
+.spot_image:hover {
+ box-shadow: 0 7px 16px rgba(0, 0, 0, 0.18);
+}
+
+.spot_detail_container {
+ display: flex;
+ /* flex-direction: column;
+    align-items: flex-start; */
+ justify-content: space-between;
+ padding: 10px 10px 5px 10px;
+ font-family: "Monteserrat-SemiBold";
+}
+
+.city_state_container {
+ display: flex;
+ font-size: 14px;
+}
+
+.bookingdate {
+ font-size: 10pt;
+ padding: 2px 0px 5px 10px;
+ font-family: "Monteserrat-Regular";
+ color: gray;
+}
+
+.spot_star_container {
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ font-size: 14px;
+}
+
+.spot_price_container {
+ display: flex;
+ font-size: 14px;
+ align-items: flex-start;
+ padding: 2px 0px 5px 10px;
+ font-family: "Monteserrat-Regular";
+}
+
+.spot_price_span {
+ font-family: "Monteserrat-SemiBold";
+
+}

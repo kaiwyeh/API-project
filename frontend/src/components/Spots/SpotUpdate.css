@@ -1,20 +1,19 @@
-/* changed */
-
-.createspotdiv {
+.updatespotdiv {
  display: flex;
  flex-direction: column;
  align-items: center;
  padding: 10px 10px 10px 10px;
 }
 
-.createspotform {
+.updatespotform {
  width: 568px;
- height: 568px;
+ height: 548px;
  padding: 10px 20px 10px 20px;
  overflow-y: scroll;
+
 }
 
-.createspot_error {
+.updatespot_error {
  display: flex;
  flex-direction: column;
  align-items: center;
@@ -23,7 +22,7 @@
  font-family: "Monteserrat-SemiBold";
 }
 
-.createspot_header {
+.updatespot_header {
  display: flex;
  justify-content: space-between;
  align-items: center;
@@ -33,11 +32,11 @@
  font-family: "Monteserrat-SemiBold";
 }
 
-.createspot_text {
- margin-right: 210px;
+.updatespot_text {
+ margin-right: 225px;
 }
 
-.createaddress {
+.updateaddress {
  border-radius: 5px;
  width: 100%;
  height: 42px;
@@ -48,11 +47,11 @@
  border: 1px solid black;
 }
 
-.createaddress:focus {
+.updateaddress:focus {
  outline: 1px solid black;
 }
 
-.createcity {
+.updatecity {
  border-radius: 5px;
  width: 100%;
  height: 42px;
@@ -63,11 +62,11 @@
  border: 1px solid black;
 }
 
-.createcity:focus {
+.updatecity:focus {
  outline: 1px solid black;
 }
 
-.createstate {
+.updatestate {
  border-radius: 5px;
  width: 100%;
  height: 42px;
@@ -78,11 +77,11 @@
  border: 1px solid black;
 }
 
-.createstate:focus {
+.updatestate:focus {
  outline: 1px solid black;
 }
 
-.createcountry {
+.updatecountry {
  border-radius: 5px;
  width: 100%;
  height: 42px;
@@ -93,11 +92,11 @@
  border: 1px solid black;
 }
 
-.createcountry:focus {
+.updatecountry:focus {
  outline: 1px solid black;
 }
 
-.createlat {
+.updatelat {
  border-radius: 5px;
  width: 100%;
  height: 42px;
@@ -108,11 +107,11 @@
  border: 1px solid black;
 }
 
-.createlat:focus {
+.updatelat:focus {
  outline: 1px solid black;
 }
 
-.createlng {
+.updatelng {
  border-radius: 5px;
  width: 100%;
  height: 42px;
@@ -123,11 +122,11 @@
  border: 1px solid black;
 }
 
-.createlng:focus {
+.updatelng:focus {
  outline: 1px solid black;
 }
 
-.createnameplace {
+.updateplacename {
  border-radius: 5px;
  width: 100%;
  height: 42px;
@@ -138,11 +137,11 @@
  border: 1px solid black;
 }
 
-.createnameplace:focus {
+.updateplacename:focus {
  outline: 1px solid black;
 }
 
-.createdescription {
+.updatedescription {
  border-radius: 5px;
  width: 100%;
  height: 42px;
@@ -155,15 +154,26 @@
  overflow: hidden;
 }
 
-.createdescription:focus {
+.updatedescription:focus {
  outline: 1px solid black;
 }
 
-.createdescription:hover {
- overflow-y: scroll
+.updatedescription:hover {
+ overflow-y: scroll;
 }
 
-.createimg {
+/* .updateimg {
+    border-radius: 5px;
+        width: 100%;
+        height: 42px;
+        box-sizing: border-box;
+        margin: 2px 0;
+        padding: 10px 10px 10px 10px;
+        font-family: "Monteserrat-Regular";
+        border: 1px solid black;
+} */
+
+.updateprice {
  border-radius: 5px;
  width: 100%;
  height: 42px;
@@ -174,26 +184,11 @@
  border: 1px solid black;
 }
 
-.createimg:focus {
+.updateprice:focus {
  outline: 1px solid black;
 }
 
-.createprice {
- border-radius: 5px;
- width: 100%;
- height: 42px;
- box-sizing: border-box;
- margin: 2px 0;
- padding: 10px 10px 10px 10px;
- font-family: "Monteserrat-Regular";
- border: 1px solid black;
-}
-
-.createprice:focus {
- outline: 1px solid black;
-}
-
-.createspotbutton {
+.updatespotbutton {
  cursor: pointer;
  background-color: rgb(230, 30, 77);
  color: white;
@@ -207,27 +202,24 @@
  border: none;
 }
 
-.createspotbutton:hover {
+.updatespotbutton:hover {
  opacity: 0.85;
 }
 
-.becomehostbutton {
- border: none;
- text-align: left;
- display: flex;
- flex-direction: column;
- justify-content: center;
+.updatespotbuttonmodal {
  cursor: pointer;
- background-color: white;
- height: 50px;
- border-bottom: 1px solid rgb(235, 235, 235);
- /* border-top-left-radius: 15px;
-                border-top-right-radius: 15px; */
- border-radius: 15px;
- font-family: "Monteserrat-Regular";
+ background-color: rgb(230, 30, 77);
+ color: white;
+ padding: 10px 10px 10px 10px;
+ margin: 2px 0;
+ width: 120px;
+ height: 42px;
+ border-radius: 5px;
+ font-family: "Monteserrat-SemiBold";
+ font-size: 12pt;
+ border: none;
 }
 
-
-.becomehostbutton:hover {
- box-shadow: 0 5px 6px rgba(0, 0, 0, 0.18);
+.updatespotbuttonmodal:hover {
+ opacity: 0.85;
 }
