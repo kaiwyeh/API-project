@@ -54,7 +54,10 @@ const SpotCreateComp = ({ hideModal }) => {
   }
   if (!price) {
    errors.push("Price per day is required")
+  } else if (price <= 0) {
+   errors.push("Price per day has to be greater than 0")
   }
+
   setValidationErrors(errors)
 
  }, [address, city, state, country, lat, lng, name, description, price, previewImage])
@@ -63,16 +66,101 @@ const SpotCreateComp = ({ hideModal }) => {
   e.preventDefault()
 
   //console.log({ address, city, state, country, lat, lng, name, description, price, previewImage })
-
   //history.push('/')
+  setSubmitted(!submitted)
+  const data = {
+   address,
+   city,
+   state,
+   country,
+   lat,
+   lng,
+   name,
+   description,
+   price,
+   previewImage: previewImage
+  }
+ }
+
+ let createdNewSpot = await dispatch(createASpot(data))
+
+ if(createdNewSpot) {
+  history.push(`/spots/${createdNewSpot.id}`)
+  hideModal(false)
  }
 
 
-return (
-
-
- 
-)
+ return (
+  <form
+   className="fruit-form"
+   onSubmit={handleSubmit}
+  >
+   <h2>Enter a Fruit</h2>
+   <ul className="errors">
+    {errors.map(error => (     
+     <li key={error}>{error}</li>
+    ))}
+   </ul>
+   <label>
+    Name
+    <input
+     type="text"
+     name="name"
+     value={name}
+     onChange={(e) => setName(e.target.value)}
+    />
+   </label>
+   <label>
+    Select a Color
+    <select value={color} onChange={(e) => setColor(e.target.value)}
+    >
+     {COLORS.map(color => (
+      <option
+       key={color}
+       value={color}
+      >
+       {color}
+      </option>
+     ))}
+    </select>
+   </label>
+   <label>
+    Sweetness
+    <input
+     type="number"
+     name="sweetness"
+     value={sweetness}
+     onChange={(e) => setSweetness(e.target.value)}
+    />
+   </label>
+   <label>
+    <input
+     type="radio"
+     value="no"
+     name="seeds"
+     onChange={(e) => setSeeds(e.target.value)}
+     checked={seeds === "no"}
+    />
+    No Seeds
+   </label>
+   <label>
+    <input
+     type="radio"
+     value="yes"
+     name="seeds"
+     onChange={(e) => setSeeds(e.target.value)}
+     checked={seeds === "yes"}
+    />
+    Seeds
+   </label>
+   <button
+    type="submit"
+    disabled={errors.length > 0}
+   >
+    Submit Fruit
+   </button>
+  </form>
+ );
 
 
 }
