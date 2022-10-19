@@ -84,89 +84,127 @@ const SpotCreateComp = ({ hideModal }) => {
 
  let createdNewSpot = await dispatch(createASpot(data))
 
- if(createdNewSpot) {
+ if (createdNewSpot) {
   history.push(`/spots/${createdNewSpot.id}`)
   hideModal(false)
  }
 
 
  return (
-  <form
-   className="fruit-form"
-   onSubmit={handleSubmit}
-  >
-   <h2>Enter a Fruit</h2>
-   <ul className="errors">
-    {errors.map(error => (     
-     <li key={error}>{error}</li>
-    ))}
-   </ul>
-   <label>
-    Name
-    <input
-     type="text"
-     name="name"
-     value={name}
-     onChange={(e) => setName(e.target.value)}
-    />
-   </label>
-   <label>
-    Select a Color
-    <select value={color} onChange={(e) => setColor(e.target.value)}
+  <div>
+   <div>
+    <button onClick={() => hideModal(false)}>
+
+    </button>
+    <div>Create Spot</div>
+   </div>
+   <form onSubmit={submitHandler}>
+    {(validationErrors.length > 0 && submitted === true) && (
+     <div>
+      <div>
+       {validationErrors.map((error, i) => (
+        <div key={i}>{error}</div>
+       ))}
+      </div>
+     </div>
+    )}
+    <div>
+     <div>
+      <input
+       className='createCity'
+       type='text'
+       placeholder='City'
+       value={city}
+       onChange={(e) => setCity(e.target.value)}
+      />
+     </div>
+     <div>
+      <input
+       className='createState'
+       type='text'
+       placeholder='State'
+       value={state}
+       onChange={(e) => setState(e.target.value)}
+      />
+     </div>
+     <div>
+      <input
+       className='createCountry'
+       type='text'
+       placeholder='Country'
+       value={country}
+       onChange={(e) => setCountry(e.target.value)}
+      />
+     </div>
+     <div>
+      <input
+       className='createLat'
+       type='text'
+       placeholder='Lat'
+       value={lat}
+       onChange={(e) => setLat(e.target.value)}
+      />
+     </div>
+     <div>
+      <input
+       className='createLng'
+       type='text'
+       placeholder='Lng'
+       value={lat}
+       onChange={(e) => setLng(e.target.value)}
+      />
+     </div>
+     <div>
+      <input
+       className='createPlaceName'
+       type='text'
+       placeholder='Place'
+       value={name}
+       onChange={(e) => setName(e.target.value)}
+      />
+     </div>
+     <div>
+      <testarea
+       className='createdescription'
+       type='text-area'
+       placeholder='description'
+       value={description}
+       onChange={(e) => setDescription(e.target.value)}
+      />
+     </div>
+     <div>
+      <input
+       className='createImage'
+       type='text'
+       placeholder='Image'
+       value={previewImage}
+       onChange={(e) => setPreviewImage(e.target.value)}
+      />
+     </div>
+     <div>
+      <input
+       className='createPrice'
+       type='text'
+       placeholder='Price'
+       value={price}
+       onChange={(e) => setPrice(e.target.value)}
+      />
+     </div>
+    </div>
+    <button
+     className='createSpotButton'
+     type='submit'
+     disabled={validationErrors.length > 0 && submitted}
     >
-     {COLORS.map(color => (
-      <option
-       key={color}
-       value={color}
-      >
-       {color}
-      </option>
-     ))}
-    </select>
-   </label>
-   <label>
-    Sweetness
-    <input
-     type="number"
-     name="sweetness"
-     value={sweetness}
-     onChange={(e) => setSweetness(e.target.value)}
-    />
-   </label>
-   <label>
-    <input
-     type="radio"
-     value="no"
-     name="seeds"
-     onChange={(e) => setSeeds(e.target.value)}
-     checked={seeds === "no"}
-    />
-    No Seeds
-   </label>
-   <label>
-    <input
-     type="radio"
-     value="yes"
-     name="seeds"
-     onChange={(e) => setSeeds(e.target.value)}
-     checked={seeds === "yes"}
-    />
-    Seeds
-   </label>
-   <button
-    type="submit"
-    disabled={errors.length > 0}
-   >
-    Submit Fruit
-   </button>
-  </form>
- );
-
-
+     Create New Spot
+    </button>
+   </form >
+  </div >
+ )
 }
 
 
-
+export default SpotCreateComp
 
 
 
