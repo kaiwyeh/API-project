@@ -52,7 +52,10 @@ const SpotCreateComp = ({ hideModal }) => {
   if (!description) {
    errors.push("Description is required")
   }
-  if (!price) {
+  if (!previewImage) {
+   errors.push("Preview image is required")
+  }
+  if (!price || isNaN(price)) {
    errors.push("Price per day is required")
   } else if (price <= 0) {
    errors.push("Price per day has to be greater than 0")
@@ -62,7 +65,7 @@ const SpotCreateComp = ({ hideModal }) => {
 
  }, [address, city, state, country, lat, lng, name, description, price, previewImage])
 
- const submitHandler = (e) => {
+ const submitHandler = async (e) => {
   e.preventDefault()
 
   //console.log({ address, city, state, country, lat, lng, name, description, price, previewImage })
@@ -89,19 +92,34 @@ const SpotCreateComp = ({ hideModal }) => {
   hideModal(false)
  }
 
+ setAddress('')
+ setCity('')
+ setState('')
+ setCountry('')
+ setLat('')
+ setLng('')
+ setName('')
+ setDescription('')
+ setPrice('')
+ setPreviewImage('')
+ setValidationErrors('')
+
+
+
+
 
  return (
-  <div>
-   <div>
-    <button onClick={() => hideModal(false)}>
-
+  <div className='createSpot'>
+   <div className='createSpotHeader'>
+    <button className='closeButton' onClick={() => hideModal(false)}>
+     X
     </button>
-    <div>Create Spot</div>
+    <div className='createSpotText'>Create Spot</div>
    </div>
-   <form onSubmit={submitHandler}>
+   <form className='createSpotForm' onSubmit={submitHandler}>
     {(validationErrors.length > 0 && submitted === true) && (
      <div>
-      <div>
+      <div className='createSpotError'>
        {validationErrors.map((error, i) => (
         <div key={i}>{error}</div>
        ))}
@@ -109,6 +127,15 @@ const SpotCreateComp = ({ hideModal }) => {
      </div>
     )}
     <div>
+     <div>
+      <input
+       className='createAddress'
+       type='text'
+       placeholder='Address'
+       value={address}
+       onChange={(e) => setAddress(e.target.value)}
+      />
+     </div>
      <div>
       <input
        className='createCity'
