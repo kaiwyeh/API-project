@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import './LoginFormModal.css'
 
 
-
 function LoginForm({ hideModal }) {
  const dispatch = useDispatch();
  const [credential, setCredential] = useState("");
@@ -25,13 +24,13 @@ function LoginForm({ hideModal }) {
   if (validData) hideModal();
  };
 
+
+//Changed
  return (
   <div className="logindiv">
    <div className="login_header">
-    <button onClick={() => hideModal()} className="closeButton">
-     X
-    </button>
-    <div className="login_text">Log In</div>
+
+    <div className="login_text"></div>
    </div>
    <form className="loginform" onSubmit={handleSubmit}>
     <h2>Welcome to Travelbnb!</h2>

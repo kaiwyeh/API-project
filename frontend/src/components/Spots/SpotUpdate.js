@@ -2,15 +2,14 @@ import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
-import { editSpots, getASpot } from '../../store/spots'
+import { editSpots, getASpotById } from '../../store/spots'
 
 
-import './SpotsUpdatePage.css'
+import './SpotUpdate.css'
 
 
-const SpotsUpdatePage = ({ spot, closeModal }) => {
- // const {id} = useParams()
- // const spot = useSelector(state => state.spot[id])
+const SpotUpdate = ({ spot, closeModal }) => {
+
  const history = useHistory()
  const dispatch = useDispatch()
 
@@ -66,7 +65,7 @@ const SpotsUpdatePage = ({ spot, closeModal }) => {
 
   let updatedSpot = await dispatch(editSpots(payload))
 
-  await dispatch(getASpot(payload.id))
+  await dispatch(getASpotById(payload.id))
 
   if (updatedSpot) {
    history.push(`/spots/${updatedSpot.id}`)
