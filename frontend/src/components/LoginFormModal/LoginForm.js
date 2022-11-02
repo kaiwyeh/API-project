@@ -34,7 +34,7 @@ function LoginForm({ closeModal }) {
     <div className="login_text">Log In</div>
    </div>
    <form className="loginform" onSubmit={handleSubmit}>
-    <h2>Welcome to Airbb</h2>
+    <h2>Welcome to TravelBnB</h2>
     <div className="loginerror">
      {errors.map((error, idx) => (
       <div className="loginerror_text" key={idx}>

@@ -52,7 +52,7 @@ function SignupFormPage({ closeModal }) {
     <div className="signup_text">Sign up</div>
    </div>
    <form className="signupform" onSubmit={handleSubmit}>
-    <h2>Welcome to Airbb</h2>
+    <h2>Welcome to TravelBnB</h2>
     <div className="signuperror">
      {errors.map((error, idx) => (
       <div className="signuperror_text" key={idx}>

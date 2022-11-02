@@ -33,7 +33,7 @@ function Navigation({ isLoaded }) {
        src={logo}
        alt="Home"
       ></img>
-      <div className="airbnbhome_text">&nbsp;airbb</div>
+      <div className="airbnbhome_text">&nbsp;TravelBnB</div>
      </NavLink>
     </div>
     {isLoaded && sessionLinks}
