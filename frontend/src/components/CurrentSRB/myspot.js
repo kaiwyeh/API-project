@@ -35,7 +35,7 @@ function MySpot() {
        <div className="myspot_notext"> No Spots Here...</div>
        <img
         className="myspot_notshownimage"
-        src="https://images.pexels.com/photos/4032024/pexels-photo-4032024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        src="https://images.pexels.com/photos/2897913/pexels-photo-2897913.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         alt="Not Shown"
        ></img>
        <div className="myspot_notext"> Click to go back Home!</div>

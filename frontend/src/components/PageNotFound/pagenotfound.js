@@ -10,7 +10,7 @@ const PageNotFound = () => {
     <NavLink className="pagenotfound_link" to={"/"}>
      <img
       className="doggo_img"
-      src="https://images.pexels.com/photos/4587995/pexels-photo-4587995.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      src="https://images.pexels.com/photos/1629780/pexels-photo-1629780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
       alt="404"
      ></img>
      <div className="pagenotfound_secondline">
