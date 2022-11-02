@@ -83,10 +83,10 @@ function MySpot() {
     <div className="footer_container">
      <div className="footer_maindiv">
       <div className="footer_div">
-       &copy; 2022 Airbb, Inc. &nbsp;·&nbsp;
+       &copy; 2022 TravelBnB, Inc. &nbsp;·&nbsp;
        <a
         className="github_link"
-        href="https://github.com/kevykim"
+        href="https://github.com/kaiwyeh"
         target="_blank"
         rel="noopener noreferrer"
        >
@@ -95,7 +95,7 @@ function MySpot() {
        &nbsp;·&nbsp;
        <a
         className="linkedin_link"
-        href="https://linkedin.com/in/kevin-kim-a88429150"
+        href="https://www.linkedin.com/in/kaiweiyeh/"
         target="_blank"
         rel="noopener noreferrer"
        >
@@ -104,7 +104,7 @@ function MySpot() {
        &nbsp;·&nbsp;
        <a
         className="email_link"
-        href="mailto:kebonkim@gmail.com"
+        href="mailto:kaiyehtw@gmail.com"
         target="_blank"
         rel="noopener noreferrer"
        >
