@@ -25,7 +25,7 @@ module.exports = {
         lat: 33.612840767237834,
         lng: - 117.92898133263157,
         name: 'Beach House in the heart of Balboa Peninsula',
-        description: 'Come experience quintessential Newport Beach in your private cozy beach house. Spend your sunny days enjoying the outdoor patio or take a quick walk to the best California beaches for a day by the ocean. Spend warm nights BBQing at the house or walk over to Lido Marina Village to enjoy the finest waterfront eateries in town. It would not be a trip to the beach without access to activities; beach cruisers, boogie boards, beach towels, games, and beach chairs are all available for your use.',
+        description: 'Come experience quintessential Newport Beach in your private cozy beach house. Spend your sunny days enjoying the outdoor patio or take a quick walk to the best California beaches for a day by the ocean. Spend warm nights BBQing at the house or walk over to Lido Marina Village to enjoy the finest waterfront eateries in town.',
         price: 400,
       },
       {
@@ -37,7 +37,7 @@ module.exports = {
         lat: 33.672303566337014,
         lng: - 117.99550932513951,
         name: 'Huntington Beach Bungalow 2 miles From The Beach',
-        description: 'Modern 1 story bungalow in Huntington Beach. Mahogany wood floors, marble and granite throughout. Recessed lighting and rich decor. Fantastic location with private corner lot and large backyard with JACUZZI & BBQ. Easy parking drive way 4 cars ,AC (entire bungalow)great for summer , bikes available,alarm , and security cameras system .Boat and jet skis available for additional cost. Enjoy the World famous Huntington Beach Ca and take a day trip to Laguna Beach and Newport Beach close by.',
+        description: 'Modern 1 story bungalow in Huntington Beach. Mahogany wood floors, marble and granite throughout. Recessed lighting and rich decor. Fantastic location with private corner lot and large backyard with JACUZZI & BBQ. Easy parking drive way 4 cars ,AC (entire bungalow)great for summer , bikes available,alarm , and security cameras system .Boat and jet skis available for additional cost.',
         price: 799,
       },
       {
