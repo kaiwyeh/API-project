@@ -1,0 +1,128 @@
+.profile_container {
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ border-radius: 50px;
+ height: 45px;
+ cursor: pointer;
+}
+
+.profile_drop_container {
+ position: relative;
+ display: flex;
+ align-items: center;
+ flex-direction: column;
+}
+
+
+
+
+.profile-dropdown {
+ display: flex;
+ flex-direction: column;
+ position: absolute;
+ background-color: white;
+ border: 1px solid rgb(235, 235, 235);
+ border-radius: 10px;
+ margin-top: 35px;
+ margin-right: 215px;
+ width: 200px;
+ font-size: 10pt;
+ box-shadow: 0 5px 6px rgba(0, 0, 0, 0.18);
+
+}
+
+.profile-username {
+ text-align: left;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ cursor: pointer;
+ border: none;
+ background-color: white;
+ height: 50px;
+ border-top-left-radius: 10px;
+ border-top-right-radius: 10px;
+ padding-left: 4px;
+ font-family: "Monteserrat-Regular";
+}
+
+.profile-username:hover {
+ background-color: rgb(249, 248, 248);
+}
+
+.profile-email {
+ text-align: left;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ cursor: pointer;
+ border: none;
+ background-color: white;
+ height: 50px;
+ border-top: 1px solid rgb(235, 235, 235);
+ padding-left: 4px;
+ font-family: "Monteserrat-Regular";
+}
+
+.profile-email:hover {
+ background-color: rgb(249, 248, 248);
+}
+
+.profilelogout {
+ text-align: left;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ cursor: pointer;
+ border: none;
+ background-color: white;
+ height: 50px;
+ border-bottom-left-radius: 10px;
+ border-bottom-right-radius: 10px;
+ width: 100%;
+ font-family: "Monteserrat-Regular";
+}
+
+.profilelogout:hover {
+ background-color: rgb(249, 248, 248);
+}
+
+.my_spot_link {
+ text-align: left;
+ text-decoration: none;
+ color: black;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ cursor: pointer;
+ border: none;
+ background-color: white;
+ padding-left: 6px;
+ height: 50px;
+ font-family: "Monteserrat-Regular";
+}
+
+.my_spot_link:hover {
+ background-color: rgb(249, 248, 248);
+}
+
+.my_review_link {
+ text-align: left;
+ padding-left: 6px;
+ display: flex;
+ color: black;
+ text-decoration: none;
+ flex-direction: column;
+ justify-content: center;
+ cursor: pointer;
+ border: none;
+ background-color: white;
+ height: 50px;
+ width: auto;
+ font-family: "Monteserrat-Regular";
+}
+
+.my_review_link:hover {
+ background-color: rgb(249, 248, 248);
+}

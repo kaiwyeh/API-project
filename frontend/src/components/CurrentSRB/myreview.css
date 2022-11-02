@@ -1,0 +1,113 @@
+.myreview_container {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+}
+
+.myreview_text {
+ display: flex;
+ justify-content: center;
+ font-family: "Monteserrat-SemiBold";
+ font-size: 26pt;
+ padding: 15px;
+}
+
+.myreview_box {
+ display: flex;
+ justify-content: center;
+ padding: 10px 10px 10px 10px;
+ max-width: 1200px;
+}
+
+.myreview_outer {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+}
+
+.myreview_links {
+ padding: 15px;
+ border-bottom: 1px solid rgb(222, 221, 221);
+ text-align: center;
+ text-decoration: none;
+ color: black;
+ font-family: "Monteserrat-SemiBold";
+}
+
+
+
+.myreview_star {
+ padding: 15px;
+}
+
+.myreview_date {
+ color: gray;
+ padding: 15px;
+}
+
+.myreview_buttons {
+ display: flex;
+ padding: 15px;
+ ;
+ justify-content: space-between;
+}
+
+.myreview_review {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ padding: 15px;
+}
+
+.myreview_div {
+ display: flex;
+ flex-direction: column;
+ width: 350px;
+ height: 300px;
+ justify-content: center;
+ border: 1px solid rgb(235, 235, 235);
+ border-radius: 15px;
+ padding: 10px 10px 10px 10px;
+ margin: 15px;
+}
+
+.myreview_div:hover {
+ box-shadow: 0 7px 16px rgba(0, 0, 0, 0.18);
+}
+
+.myreview_notshown {
+ display: flex;
+ justify-content: center;
+ flex-direction: column;
+}
+
+.myreview_notinner {
+ margin-top: 50px;
+ display: flex;
+ justify-content: center;
+ flex-direction: column;
+}
+
+.myreview_nolink {
+ text-decoration: none;
+ color: black;
+}
+
+.myreview_nolink:hover {
+ color: red;
+}
+
+.myreview_notext {
+ text-align: center;
+ padding: 15px;
+ font-family: "Monteserrat-SemiBold";
+ font-size: 24pt;
+}
+
+.myreview_notshownimage {
+ width: 400px;
+ height: 400px;
+ object-fit: cover;
+ border-radius: 15px;
+ box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
