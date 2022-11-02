@@ -1,17 +1,27 @@
-.logindiv {
+.updatereviewdiv {
  display: flex;
  flex-direction: column;
  align-items: center;
  padding: 10px 10px 10px 10px;
 }
 
-.loginform {
+.updatereviewform {
+
  width: 568px;
  padding: 24px;
 
 }
 
-.login_header {
+.updatereview_error {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ color: red;
+ padding: 10px 5px 10px 5px;
+ font-family: "Monteserrat-SemiBold";
+}
+
+.updatereview_header {
  display: flex;
  justify-content: space-between;
  align-items: center;
@@ -21,29 +31,11 @@
  font-family: "Monteserrat-SemiBold";
 }
 
-
-
-.login_text {
- margin-right: 230px;
+.updatereview_text {
+ margin-right: 205px;
 }
 
-.loginerror {
- display: flex;
- flex-direction: column;
- justify-content: center;
- align-items: center;
- color: red;
- font-family: "Monteserrat-SemiBold";
- padding: 10px 5px 10px 5px;
-}
-
-.loginerror_text {
- display: flex;
- text-align: center;
- padding: 1px;
-}
-
-.loginemail {
+.updatereviewstar {
  border-radius: 5px;
  width: 100%;
  height: 42px;
@@ -54,26 +46,30 @@
  border: 1px solid black;
 }
 
-.loginemail:focus {
+.updatereviewstar:focus {
  outline: 1px solid black;
 }
 
-.loginpass {
+.updatereviewtext {
  border-radius: 5px;
  width: 100%;
+ height: 42px;
  box-sizing: border-box;
  margin: 2px 0;
- height: 42px;
  padding: 10px 10px 10px 10px;
  font-family: "Monteserrat-Regular";
  border: 1px solid black;
+ resize: none;
+ overflow: hidden;
 }
 
-.loginpass:focus {
+.updatereviewtext:focus {
  outline: 1px solid black;
 }
 
-.loginbutton {
+
+
+.updatereviewbutton {
  cursor: pointer;
  background-color: rgb(230, 30, 77);
  color: white;
@@ -87,23 +83,25 @@
  border: none;
 }
 
-.loginbutton:hover {
+
+.updatereviewbutton:hover {
  opacity: 0.85;
 }
 
-.loginmodal {
- text-align: left;
- display: flex;
- flex-direction: column;
- justify-content: center;
+.updatereviewbuttonmodal {
  cursor: pointer;
+ background-color: rgb(230, 30, 77);
+ color: white;
+ padding: 10px 10px 10px 10px;
+ margin: 2px 0;
+ width: 140px;
+ height: 42px;
+ border-radius: 5px;
+ font-family: "Monteserrat-SemiBold";
+ font-size: 12pt;
  border: none;
- background-color: white;
- height: 50px;
- border-top: 1px solid rgb(235, 235, 235);
- font-family: "Monteserrat-Regular";
 }
 
-.loginmodal:hover {
- background-color: rgb(249, 248, 248);
+.updatereviewbuttonmodal:hover {
+ opacity: 0.85;
 }

@@ -1,74 +1,47 @@
-//From Bonus phase
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
-import LoginFormModal from '../LoginFormModal';
-import './Navigation.css';
+
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import ProfileButton from "./ProfileButton";
+import LoginFormModal from "../LoginFormModal";
+import "./Navigation.css";
+import SignUpModal from "../SignUpFormPage/SignUpModal";
+import { useState } from "react";
+import logo from '../../images/airbb.png'
+
+
 
 function Navigation({ isLoaded }) {
- const sessionUser = useSelector(state => state.session.user);
+ const sessionUser = useSelector((state) => state.session.user);
+ const [startMenu, setStartMenu] = useState(false);
 
- let sessionLinks;
- if (sessionUser) {
-  sessionLinks = (
-   <ProfileButton user={sessionUser} />
-  );
- } else {
-  sessionLinks = (
-   <>
-    <LoginFormModal />
-    <NavLink to="/signup">Sign Up</NavLink>
-   </>
-  );
- }
+ const [signUp, setSignUp] = useState(false)
+ const [logIn, setLogIn] = useState(false)
+
+
+
+
+ let sessionLinks = <ProfileButton signUp={signUp} setSignUp={setSignUp} logIn={logIn} setLogIn={setLogIn} showStartMenu={setStartMenu} user={sessionUser} />
 
  return (
-  <ul>
-   <li>
-    <NavLink exact to="/">Home</NavLink>
+  <div className="navbar_container">
+   <div className="navbar">
+    <div className="airbnbhome_div">
+     <NavLink className="airbnbhome" exact to="/">
+      <img
+       style={{ width: "40px", height: "40px", objectFit: "contain" }}
+       src={logo}
+       alt="Home"
+      ></img>
+      <div className="airbnbhome_text">&nbsp;airbb</div>
+     </NavLink>
+    </div>
     {isLoaded && sessionLinks}
-   </li>
-  </ul>
+    <SignUpModal menu={startMenu} showMenu={setStartMenu} signUp={signUp} setSignUp={setSignUp} />
+    <LoginFormModal showMenu={setStartMenu} logIn={logIn} setLogIn={setLogIn} />
+   </div>
+  </div>
  );
 }
 
 export default Navigation;
-
-
-// FROM PHASE 0-3
-
-// import React from 'react';
-// import { NavLink } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
-// import ProfileButton from './ProfileButton';
-// import './Navigation.css';
-
-// function Navigation({ isLoaded }) {
-//  const sessionUser = useSelector(state => state.session.user);
-
-//  let sessionLinks;
-//  if (sessionUser) {
-//   sessionLinks = (
-//    <ProfileButton user={sessionUser} />
-//   );
-//  } else {
-//   sessionLinks = (
-//    <>
-//     <NavLink to="/login">Log In</NavLink>
-//     <NavLink to="/signup">Sign Up</NavLink>
-//    </>
-//   );
-//  }
-
-//  return (
-//   <ul>
-//    <li>
-//     <NavLink exact to="/">Home</NavLink>
-//     {isLoaded && sessionLinks}
-//    </li>
-//   </ul>
-//  );
-// }
-
-// export default Navigation;
