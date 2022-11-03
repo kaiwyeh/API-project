@@ -1,0 +1,48 @@
+.form-create-spot {
+ display: flex;
+ flex-direction: column;
+ width: 500px;
+}
+
+.become-host-page {
+ justify-content: center;
+ align-items: center;
+ padding: 60px;
+ display: flex;
+}
+
+.form-input {
+ padding: 10px;
+ margin: 10px;
+ border: 1px solid;
+ border-radius: 10px;
+}
+
+.two-button {
+ display: flex;
+ flex-direction: row;
+ padding: 10px;
+ justify-content: space-between;
+}
+
+.one-button-create {
+ margin: 8px;
+ padding: 10px;
+ background-color: white;
+ color: #ff5a5f;
+ border: 1px solid #ff5a5f;
+ border-radius: 40px;
+ font-size: 18px;
+ width: 150px
+}
+
+.one-button-create:hover {
+ margin: 8px;
+ background-color: #ff5a5f;
+ color: white;
+ border: 1px solid #ff5a5f
+}
+
+.host-text {
+ color: #ff5a5f;
+}
