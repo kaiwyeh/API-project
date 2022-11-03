@@ -72,8 +72,8 @@ function CreateSpot() {
  return (
   <div className="become-host-page">
    <form className="form-create-spot" onSubmit={submitHandler}>
-    <h2 className="host-text">Open your door to hosting </h2>
-    <h3 className="host-text">   You can host anything, anywhere</h3>
+    <h2 className="host-text">Start a new listing </h2>
+    <h3 className="host-text">   Tell us more about your amazing property:</h3>
     <ul className="errors">
      {errors.length > 0 &&
       errors.map((error) => <li key={error}>{error}</li>)}
