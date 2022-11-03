@@ -14,7 +14,7 @@ const SpotsCreatePage = ({ closeModal }) => {
 
 
 
- const [address, setAddress] = useState('') 
+ const [address, setAddress] = useState('')
  const [city, setCity] = useState('')
  const [state, setState] = useState('')
  const [country, setCountry] = useState('')
@@ -37,7 +37,7 @@ const SpotsCreatePage = ({ closeModal }) => {
   if ((lng % 1 === 0) || (!lng) || isNaN(lng)) errors.push('Please enter valid a longitude with a decimal')
   if (!name.length) errors.push('Please enter a name for your spot!')
   if (description.length === 0) errors.push('Please provide description')
-  if (description.length > 200) errors.push('Please shorten description')
+  if (description.length > 400) errors.push('Please shorten description')
   if (((!prevImage.includes("jpg")) && (!prevImage.includes("png")) && (!prevImage.includes('jpeg'))) || (!prevImage.includes('https') && (!prevImage.includes('http'))))
    errors.push("Please add a preview Image");
   if (isNaN(price) || !price) errors.push('Please add a valid price')

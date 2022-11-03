@@ -1,36 +1,17 @@
-@font-face {
- font-family: "Monteserrat-Medium";
- src: url('../public/fonts/static/Montserrat-Medium.ttf');
+.one-button {
+ margin: 8px;
+ background-color: white;
+ color: #ff5a5f;
+ border: 1px solid #ff5a5f
 }
 
-@font-face {
- font-family: "Monteserrat-Regular";
- src: url('../public/fonts/static/Montserrat-Regular.ttf');
+.one-button:hover {
+ margin: 8px;
+ background-color: #ff5a5f;
+ color: white;
+ border: 1px solid #ff5a5f
 }
-
-@font-face {
- font-family: "Monteserrat-SemiBold";
- src: url('../public/fonts/static/Montserrat-SemiBold.ttf');
-}
-
 
 * {
- box-sizing: border-box;
-}
-
-body {
- margin: 0;
- /* position: relative; */
- min-height: 100%;
- font-family: "Monteserrat-Medium";
- padding-bottom: 15px;
- box-sizing: inherit;
-
-}
-
-html {
- margin: 0;
- height: 100%;
- box-sizing: border-box;
-
+ font-family: 'Noto Sans', sans-serif;
 }

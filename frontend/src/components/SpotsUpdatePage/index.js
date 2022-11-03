@@ -35,7 +35,7 @@ const SpotsUpdatePage = ({ spot, closeModal }) => {
   if (lng.length === 0 || lng % 1 === 0 || isNaN(lng)) errors.push('Please enter valid a longitude with a decimal')
   if (!name.length) errors.push('Please enter a name for your spot!')
   if (description.length === 0) errors.push("Please provide description");
-  if (description.length > 200) errors.push('Please shorten description')
+  if (description.length > 400) errors.push('Please shorten description')
 
   if (isNaN(price) || !price) errors.push("Please add a valid price");
 
