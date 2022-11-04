@@ -2,13 +2,16 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
+import SignupFormPage from "./components/SignupFormPage";
+import LoginFormPage from "./components/LoginFormPage";
+import GetAllSpots from "./components/Spots";
+import GetSpot from './components/SpotsID';
+import CreateSpot from './components/CreateSpot'
+import GetUserSpots from './components/UserSpot'
+import EditUserSpots from './components/EditSpot'
+import CreateReview from './components/CreateReview'
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-import SpotsHomePage from "./components/SpotsHomePage";
-import SpotsDetailPage from "./components/SpotsDetailPage";
-import MySpot from "./components/CurrentSRB/myspot";
-import MyReview from "./components/CurrentSRB/myreview";
-import PageNotFound from "./components/PageNotFound/pagenotfound";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,21 +25,31 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route path="/signup">
+            <SignupFormPage />
+          </Route>
+          <Route path="/login">
+            <LoginFormPage />
+          </Route>
+          <Route path="/spots/current">
+            <GetUserSpots />
+          </Route>
+          <Route path="/spots/:id/edit">
+            <EditUserSpots />
+          </Route>
           <Route exact path="/">
-            <SpotsHomePage />
+            <GetAllSpots />
           </Route>
-          <Route exact path="/reviews">
-            <MyReview />
+          <Route path="/spots/:id/addReview">
+            <CreateReview />
           </Route>
-          <Route exact path="/spots">
-            <MySpot />
+          <Route path="/spots/:id">
+            <GetSpot />
           </Route>
-          <Route exact path="/spots/:id">
-            <SpotsDetailPage />
+          <Route path="/BecomeAHost">
+            <CreateSpot />
           </Route>
-          <Route>
-            <PageNotFound />
-          </Route>
+
         </Switch>
       )}
     </>

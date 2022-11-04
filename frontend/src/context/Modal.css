@@ -7,7 +7,6 @@
  display: flex;
  justify-content: center;
  align-items: center;
- font-family: "Monteserrat-Regular";
 }
 
 #modal-background {
@@ -19,12 +18,9 @@
  background-color: rgba(0, 0, 0, 0.7);
 }
 
-
 #modal-content {
  position: absolute;
- width: 568px;
- height: auto;
- border-radius: 10px;
  background-color: white;
- padding: 24px;
+ width: 50%;
+ color: black;
 }

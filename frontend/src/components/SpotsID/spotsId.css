@@ -1,0 +1,57 @@
+.single-spot-page {
+ display: flex;
+ flex-direction: column;
+ padding: 70px;
+
+}
+
+.below-name {
+ display: flex;
+ flex-direction: row;
+ justify-content: flex-start;
+ padding-bottom: 10px;
+ align-items: center;
+}
+
+.spot-image {
+ object-fit: cover;
+ width: 720px;
+ border-radius: 25px;
+ margin-top: 10px;
+ margin-bottom: 10px;
+}
+
+.rating {
+ display: flex;
+ flex-direction: row;
+ margin-right: 15px;
+}
+
+.spot-location {
+ display: flex;
+ flex-direction: row;
+ margin-left: 20px;
+}
+
+#hosted {
+ padding-bottom: 20px;
+ border-bottom: 1px solid #dddddd;
+ width: 800px;
+}
+
+#description {
+ padding-bottom: 20px;
+}
+
+.review-session {
+ display: flex;
+ flex-direction: column;
+ padding-top: 40px;
+ border-top: 1px solid #dddddd;
+ width: 800px;
+}
+
+.review-review {
+ padding-bottom: 30px;
+ width: 700px;
+}
