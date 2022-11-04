@@ -12,9 +12,9 @@ module.exports = {
         country: 'USA',
         lat: 33.653785493254716,
         lng: - 117.90601033981734,
-        name: 'The Nugget - A tiny house near the beach',
-        description: 'The Nugget is ideal for romantic getaways or business travels. It is nestled in a calm backyard, in a safe residential area, among bamboos, aloes and agaves. Special attention was given to the comfy queen bed. The "business corner" features fast Wi-Fi and a laptop desk.',
-        price: 170,
+        name: 'House near the beach',
+        description: 'The House is ideal for romantic getaways or business travels. It is nestled in a calm backyard, in a safe residential area, among bamboos, aloes and agaves. Special attention was given to the comfy queen bed. The "business corner" features fast Wi-Fi and a laptop desk.',
+        price: 370,
       },
       {
         ownerId: 1,
@@ -30,14 +30,14 @@ module.exports = {
       },
       {
         ownerId: 1,
-        address: '234 Adams Ave',
-        city: 'Huntington Beach',
+        address: '2680 32nd St',
+        city: 'Santa Monica',
         state: 'California',
         country: 'USA',
-        lat: 33.672303566337014,
-        lng: - 117.99550932513951,
-        name: 'Huntington Beach Bungalow 2 miles From The Beach',
-        description: 'Modern 1 story bungalow in Huntington Beach. Mahogany wood floors, marble and granite throughout. Recessed lighting and rich decor. Fantastic location with private corner lot and large backyard with JACUZZI & BBQ. Easy parking drive way 4 cars ,AC (entire bungalow)great for summer , bikes available,alarm , and security cameras system .Boat and jet skis available for additional cost.',
+        lat: 34.0229584173266,
+        lng: - 118.45300365953959,
+        name: 'Beautiful house near Santa Monica Pier',
+        description: 'Modern 2 story house in Santa Monica. Mahogany wood floors, marble and granite throughout. Recessed lighting and rich decor.',
         price: 799,
       },
       {
@@ -61,7 +61,7 @@ module.exports = {
         lat: 33.62523673609298,
         lng: - 117.91752602842305,
         name: '1 mile from Newport Beach',
-        description: 'Best location, only 1 mile from Newport Beach',
+        description: 'Fantastic location with private corner lot and large backyard with JACUZZI & BBQ. Easy parking drive way 4 cars ,AC (entire bungalow)great for summer , bikes available,alarm , and security cameras system .Boat and jet skis available for additional cost.',
         price: 435,
       }
     ], {});

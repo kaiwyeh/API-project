@@ -5,7 +5,7 @@ module.exports = {
     return await queryInterface.bulkInsert('SpotImages', [
       {
         spotId: 1,
-        url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-26574926/original/5649f394-6bc3-4414-99ba-0e8a82ee8111.jpeg?im_w=1200',
+        url: 'https://images.pexels.com/photos/4509004/pexels-photo-4509004.jpeg?auto=compress&cs=tinysrgb&w=400',
         preview: true,
       },
       {
