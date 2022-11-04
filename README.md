@@ -3,6 +3,7 @@
 TravelBnB is a web application clone inspired by Airbnb, that allows online users to rent homes and other types of properties for vacations and other kinds of activities.
 * [Live Site](https://travelbnb-kai.herokuapp.com/)
 
+
 List of technologies used on the project:
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
@@ -14,23 +15,22 @@ List of technologies used on the project:
 ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
 
 
-# Features:
 
+# Images:
+## Home Page
+<img src="./frontend/public/readmeimages/1_home_page.png"/>
 
+## Detail Page
+<img src="./frontend/public/readmeimages/2_spot_page.png"/>
 
+## Manage My Spots (Edit or Delete)
+<img src="./frontend/public/readmeimages/6_manage_my spot.png"/>
 
+## Create Review
+<img src='./frontend/public/readmeimages/5_create_review.png'/>
 
-
-
-
-
-
-
-
-
-
-
-
+## Become a Host
+<img src="./frontend/public/readmeimages/7_become_a_host.png"/>
 
 
 
