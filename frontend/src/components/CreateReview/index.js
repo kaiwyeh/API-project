@@ -4,81 +4,81 @@ import { useHistory, Redirect, useParams } from "react-router-dom";
 import { createReviewsThunk } from "../../store/reviews";
 
 function CreateReview() {
- const dispatch = useDispatch();
- const history = useHistory();
- const { id } = useParams()
- const sessionUser = useSelector((state) => state.session.user);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const { id } = useParams()
+  const sessionUser = useSelector((state) => state.session.user);
 
- const [review, setReview] = useState('');
- const [stars, setStars] = useState('');
- const [errors, setErrors] = useState([]);
+  const [review, setReview] = useState('');
+  const [stars, setStars] = useState('');
+  const [errors, setErrors] = useState([]);
 
- const updateReview = (e) => setReview(e.target.value);
- const updateStars = (e) => setStars(e.target.value);
+  const updateReview = (e) => setReview(e.target.value);
+  const updateStars = (e) => setStars(e.target.value);
 
- if (!sessionUser) return <Redirect to="/login" />;
+  if (!sessionUser) return <Redirect to="/login" />;
 
- const submitHandler = async (e) => {
-  e.preventDefault();
-  setErrors([]);
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    setErrors([]);
 
-  let Addreview = { review, stars }
+    let Addreview = { review, stars }
 
-  if (!Addreview.review.length) return setErrors(['Please provide a review']);
-  if (!Addreview.stars.length) return setErrors(['Please provide a rating']);
-  if (Addreview.stars < 1 || Addreview.stars > 5 || isNaN(Addreview.stars)) return setErrors(['Rating is between 1 and 5']);
+    if (!Addreview.review.length) return setErrors(['Please provide a review']);
+    if (!Addreview.stars.length) return setErrors(['Please provide a rating']);
+    if (Addreview.stars < 1 || Addreview.stars > 5 || isNaN(Addreview.stars) || Addreview.stars.length > 1) return setErrors(['Rating must be between 1 and 5, no decimals']);
 
-  const payload = {
-   review,
-   stars
+    const payload = {
+      review,
+      stars
+    };
+
+    const createdReview = await dispatch(createReviewsThunk(payload, id))
+    history.push(`/spots/${id}`);
+
+    if (createdReview) {
+      history.push(`/spots/${id}`);
+    }
+  }
+  const cancelHandler = (e) => {
+    e.preventDefault();
+    history.push(`/spots/${id}`);
   };
 
-  const createdReview = await dispatch(createReviewsThunk(payload, id))
-  history.push(`/spots/${id}`);
+  return (
+    <div className="become-host-page">
+      <form className="form-create-spot" onSubmit={submitHandler}>
+        <h2 className="host-text">Create A Review </h2>
 
-  if (createdReview) {
-   history.push(`/spots/${id}`);
-  }
- }
- const cancelHandler = (e) => {
-  e.preventDefault();
-  history.push(`/spots/${id}`);
- };
+        <ul className="errors">
+          {errors.length > 0 &&
+            errors.map((error) => <li key={error}>{error}</li>)}
+        </ul>
+        <input
+          className="form-input"
+          type="text"
+          placeholder="your review"
+          required
+          value={review}
+          onChange={updateReview}
+        />
+        <input
+          className="form-input"
+          type="number"
+          placeholder="stars (1 to 5)"
+          required
+          value={stars}
+          onChange={updateStars}
+        />
 
- return (
-  <div className="become-host-page">
-   <form className="form-create-spot" onSubmit={submitHandler}>
-    <h2 className="host-text">Create A Review </h2>
+        <div className="two-button">
+          <button className="one-button-create" type="submit">Submit</button>
+          <button className="one-button-create" type="button" onClick={cancelHandler}>Cancel</button>
+        </div>
 
-    <ul className="errors">
-     {errors.length > 0 &&
-      errors.map((error) => <li key={error}>{error}</li>)}
-    </ul>
-    <input
-     className="form-input"
-     type="text"
-     placeholder="review"
-     required
-     value={review}
-     onChange={updateReview}
-    />
-    <input
-     className="form-input"
-     type="text"
-     placeholder="stars"
-     required
-     value={stars}
-     onChange={updateStars}
-    />
-
-    <div className="two-button">
-     <button className="one-button-create" type="submit">Submit</button>
-     <button className="one-button-create" type="button" onClick={cancelHandler}>Cancel</button>
-    </div>
-
-   </form>
-  </div>
- )
+      </form >
+    </div >
+  )
 
 
 

@@ -127,7 +127,7 @@ function CreateSpot() {
      onChange={updateDescription}
     />
     <input
-     type="text"
+     type="number"
      className="form-input"
      placeholder="price"
      required
