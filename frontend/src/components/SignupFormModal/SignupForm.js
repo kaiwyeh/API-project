@@ -33,7 +33,7 @@ function SignupFormPage() {
    </ul>
 
    <label className="form-each">
-    firstName
+    First Name
     <input
      type="text"
      value={firstName}
@@ -42,7 +42,7 @@ function SignupFormPage() {
     />
    </label>
    <label className="form-each">
-    lastName
+    Last Name
     <input
      type="text"
      value={lastName}
