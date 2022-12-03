@@ -137,7 +137,7 @@ function CreateSpot() {
     <input
      className="form-input"
      type="text"
-     placeholder="preview image url (right click -> copy image address)"
+     placeholder="preview image url (right click on an image -> copy image address)"
      required
      value={imageUrl}
      onChange={updateImageUrl}
