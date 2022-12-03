@@ -23,6 +23,26 @@ module.exports = {
       {
         reviewId: 5,
         url: '/reviews/5',
+      },
+      {
+        reviewId: 6,
+        url: "/reviews/6"
+      },
+      {
+        reviewId: 7,
+        url: "/reviews/7"
+      },
+      {
+        reviewId: 8,
+        url: "/reviews/8"
+      },
+      {
+        reviewId: 9,
+        url: "/reviews/9"
+      },
+      {
+        reviewId: 10,
+        url: "/reviews/10"
       }
     ], {});
   },
